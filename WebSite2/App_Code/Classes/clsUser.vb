@@ -97,6 +97,8 @@ Public Class clsUser
         sql = "SELECT user_id, user_name FROM tbl_user_info"
         Select Case browse_type
             Case "BROWSE"
+                sql = sql & " WHERE user_name LIKE '%" & _criteria & "%' AND last_user <> 'INITIALIZED' ORDER BY user_name "
+            Case Else
                 sql = sql & " WHERE user_name LIKE '%" & _criteria & "%' ORDER BY user_name "
         End Select
         Return _clsDB.Fill_DataTable(sql, "tbl_user_info")

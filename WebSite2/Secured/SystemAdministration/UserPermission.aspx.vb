@@ -17,7 +17,14 @@ Partial Class Secured_SystemAdministration_UserPermission
     End Sub
 
     Protected Sub fillGridView()
-        _dtGV = _clsUser.browseUser(txtSearch.Text.Trim)
+
+        If Session("UserId") = "admin" Then
+            _dtGV = _clsUser.browseUser(txtSearch.Text.Trim, "ADMIN")
+        Else
+            _dtGV = _clsUser.browseUser(txtSearch.Text.Trim)
+        End If
+
+
         _gv.DataSource = _dtGV
         _gv.DataBind()
         If Not IsNothing(Session("NewPageIndex")) Then

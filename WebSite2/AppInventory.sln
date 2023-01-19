@@ -1,50 +1,28 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WEB", ".", "{0F16C491-AF20-4923-8195-B1B5BAF96B4E}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.1"
 		ProjectReferences = ""
 		Debug.AspNetCompiler.VirtualPath = "/WEB"
-		Debug.AspNetCompiler.PhysicalPath = "..\WEB\"
+		Debug.AspNetCompiler.PhysicalPath = "..\WebSite2\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\WEB\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/WEB"
-		Release.AspNetCompiler.PhysicalPath = "..\WEB\"
+		Release.AspNetCompiler.PhysicalPath = "..\WebSite2\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\WEB\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "55426"
-		SlnRelativePath = "..\WEB\"
-		DefaultWebSiteLanguage = "Visual Basic"
-	EndProjectSection
-EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite3", "http://localhost:8524", "{26A325A4-1AD0-405C-823C-57CED8B1D153}"
-	ProjectSection(WebsiteProperties) = preProject
-		UseIISExpress = "true"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_8524"
-		Debug.AspNetCompiler.PhysicalPath = "C:\Users\noel_\OneDrive\Documents\Visual Studio 2013\WebSites\WebSite3\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_8524\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_8524"
-		Release.AspNetCompiler.PhysicalPath = "C:\Users\noel_\OneDrive\Documents\Visual Studio 2013\WebSites\WebSite3\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_8524\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "C:\Users\noel_\OneDrive\Documents\Visual Studio 2013\WebSites\WebSite3\"
+		SlnRelativePath = "..\WebSite2\"
 		DefaultWebSiteLanguage = "Visual Basic"
 	EndProjectSection
 EndProject
@@ -64,14 +42,6 @@ Global
 		{0F16C491-AF20-4923-8195-B1B5BAF96B4E}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{0F16C491-AF20-4923-8195-B1B5BAF96B4E}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{0F16C491-AF20-4923-8195-B1B5BAF96B4E}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
-		{26A325A4-1AD0-405C-823C-57CED8B1D153}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{26A325A4-1AD0-405C-823C-57CED8B1D153}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{26A325A4-1AD0-405C-823C-57CED8B1D153}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{26A325A4-1AD0-405C-823C-57CED8B1D153}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{26A325A4-1AD0-405C-823C-57CED8B1D153}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{26A325A4-1AD0-405C-823C-57CED8B1D153}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{26A325A4-1AD0-405C-823C-57CED8B1D153}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{26A325A4-1AD0-405C-823C-57CED8B1D153}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

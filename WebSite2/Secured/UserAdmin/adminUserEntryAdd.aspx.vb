@@ -15,7 +15,7 @@ Partial Class Secured_UserAdmin_adminUserEntryAdd
         ScriptManager.RegisterStartupScript(Page, Page.GetType(), "ddlUserOffice", "$('#ddlUserOffice').select2({width:'100%'});", True)
         If Not Page.IsPostBack Then
             hfUserID.Value = Session("USERENTRY_ID")
-            _clsDB.populateDDLB(ddluserroleid, "user_role_name", "user_role_id", "tbl_user_role", "user_role_name", " WHERE is_active='Y'")
+            _clsDB.populateDDLB(ddluserroleid, "user_role_name", "user_role_id", "tbl_user_role", "user_role_name", " WHERE is_active='Y' and user_role_type = 'System' AND last_user <> 'INITIALIZED' ")
             fillForm()
 
         End If

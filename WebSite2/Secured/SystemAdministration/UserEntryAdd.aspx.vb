@@ -14,7 +14,7 @@ Partial Class Secured_SystemAdministration_UserEntryAdd
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         hfUserID.Value = Session("USERENTRY_ID")
         If Not Page.IsPostBack Then
-            _clsDB.populateDDLB(ddlUserRole, "user_role_name", "user_role_id", "tbl_user_role", "user_role_name", " WHERE is_active='Y'")
+            _clsDB.populateDDLB(ddlUserRole, "user_role_name", "user_role_id", "tbl_user_role", "user_role_name", " WHERE is_active='Y' and user_role_type = 'System' AND last_user <> 'INITIALIZED' ")
             ddlUserRole.Items.RemoveAt(0)
             ddlUserRole.SelectedValue = "4"
             fillForm()

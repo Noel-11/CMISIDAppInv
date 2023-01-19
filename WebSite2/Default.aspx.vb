@@ -17,6 +17,7 @@ Partial Class _Default
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         'lblIPAddress.Text = LocalIPAddress()
         If Not IsPostBack Then
+            txtUserId.Focus()
             Session.RemoveAll()
             Session("UserName") = "."
             ''ancIctAboutUs.HRef = ConfigurationManager.AppSettings("preUrl").ToString & "Secured/AboutUs/AboutUs.aspx"
@@ -25,9 +26,8 @@ Partial Class _Default
         End If
     End Sub
 
-    Protected Sub btnLogin_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnLogIn.ServerClick
-        'mpeMessageBox.Show()
-        Login()
+     Protected Sub btnLogin_Click1(sender As Object, e As EventArgs) Handles btnLogin.Click
+        logIn()
     End Sub
 
     Private Sub saveLoginLog(ByVal _status As String)
@@ -59,4 +59,5 @@ Partial Class _Default
     End Sub
 
    
+  
 End Class

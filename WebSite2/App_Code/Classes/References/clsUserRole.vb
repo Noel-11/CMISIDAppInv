@@ -14,6 +14,8 @@ Public Class clsUserRole
     Private _isActive As String
     Private _lastUser As String
 
+    Public Property userRoleType As String
+
     Public Property userRoleID As String
         Get
             Return Me._userRoleID
@@ -64,13 +66,14 @@ Public Class clsUserRole
         _userRoleID = ""
         _userRoleName = ""
         _userRoleDescription = ""
+        _userRoleType = ""
         _isActive = ""
         _lastUser = ""
     End Sub
 
     Public Function browseUserRole(ByVal _criteria As String, Optional ByVal browse_type As String = "BROWSE") As DataTable
         Dim sql As String = ""
-        sql = "SELECT user_role_id, user_role_name, user_role_description,is_active FROM tbl_user_role"
+        sql = "SELECT user_role_id, user_role_name, user_role_description, user_role_type,is_active FROM tbl_user_role"
         Select Case browse_type
             Case "BROWSE"
                 sql = sql & " WHERE user_role_id<>1 AND (user_role_name LIKE '%" & _criteria & "%' OR user_role_description LIKE '%" & _criteria & "%') ORDER BY user_role_name "
@@ -81,12 +84,13 @@ Public Class clsUserRole
     Public Sub saveUserRole()
         If _userRoleID = "" Then
             With _clsDB.dbUtility
-                .fieldItems = "user_role_id,user_role_name,user_role_description,is_active,last_user,last_date"
+                .fieldItems = "user_role_id,user_role_name,user_role_description,user_role_type,is_active,last_user,last_date"
                 _userRoleID = DateTime.Now.ToString("MMddyyyymmhhss") & Left(Guid.NewGuid().ToString.Replace("-", ""), 5).ToUpper
                 .sqlString = .getSQLStatement("tbl_user_role", "INSERT")
                 .ADDPARAM_CMD_String("user_role_id", _userRoleID)
                 .ADDPARAM_CMD_String("user_role_name", _userRoleName)
                 .ADDPARAM_CMD_String("user_role_description", _userRoleDescription)
+                .ADDPARAM_CMD_String("user_role_type", _userRoleType)
                 .ADDPARAM_CMD_String("is_active", _isActive)
                 .ADDPARAM_CMD_String("last_user", _lastUser)
                 .ADDPARAM_CMD_String("last_date", DateTime.Now.ToString)
@@ -94,10 +98,11 @@ Public Class clsUserRole
             End With
         Else
             With _clsDB.dbUtility
-                .fieldItems = "user_role_name,user_role_description,is_active,last_user,last_date"
+                .fieldItems = "user_role_name,user_role_description,user_role_type,is_active,last_user,last_date"
                 .sqlString = .getSQLStatement("tbl_user_role", "UPDATE", "user_role_id")
                 .ADDPARAM_CMD_String("user_role_name", _userRoleName)
                 .ADDPARAM_CMD_String("user_role_description", _userRoleDescription)
+                .ADDPARAM_CMD_String("user_role_type", _userRoleType)
                 .ADDPARAM_CMD_String("is_active", _isActive)
                 .ADDPARAM_CMD_String("last_user", _lastUser)
                 .ADDPARAM_CMD_String("last_date", DateTime.Now.ToString)
@@ -114,8 +119,8 @@ Public Class clsUserRole
             _userRoleID = dt.Rows(0)("user_role_id")
             _userRoleName = dt.Rows(0)("user_role_name")
             _userRoleDescription = dt.Rows(0)("user_role_description")
+            _userRoleType = dt.Rows(0)("user_role_type")
             _isActive = dt.Rows(0)("is_active")
-            _lastUser = dt.Rows(0)("last_user")
         Else
             initialize()
         End If

@@ -1,17 +1,25 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               8.0.16 - MySQL Community Server - GPL
+-- Server version:               8.0.21 - MySQL Community Server - GPL
 -- Server OS:                    Win64
--- HeidiSQL Version:             10.3.0.5771
+-- HeidiSQL Version:             12.0.0.6468
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
 /*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- Dumping structure for table db_appinv.tbl_application
+
+-- Dumping database structure for db_appinvi
+CREATE DATABASE IF NOT EXISTS `db_appinvi` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `db_appinvi`;
+
+-- Dumping structure for table db_appinvi.tbl_application
 CREATE TABLE IF NOT EXISTS `tbl_application` (
   `application_id` varchar(50) NOT NULL,
   `client_id` varchar(50) DEFAULT NULL,
@@ -21,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `tbl_application` (
   `application_start_date` date DEFAULT NULL,
   `application_deployment_date` date DEFAULT NULL,
   `application_version` varchar(50) DEFAULT NULL,
+  `application_status` varchar(50) DEFAULT NULL,
   `contact_person` varchar(50) DEFAULT NULL,
   `contact_number` varchar(50) DEFAULT NULL,
   `contact_email_address` varchar(50) DEFAULT NULL,
@@ -33,11 +42,11 @@ CREATE TABLE IF NOT EXISTS `tbl_application` (
   KEY `client_id` (`client_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table db_appinv.tbl_application: ~0 rows (approximately)
-/*!40000 ALTER TABLE `tbl_application` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_application` ENABLE KEYS */;
+-- Dumping data for table db_appinvi.tbl_application: ~0 rows (approximately)
+INSERT IGNORE INTO `tbl_application` (`application_id`, `client_id`, `application_name`, `application_details`, `application_url`, `application_start_date`, `application_deployment_date`, `application_version`, `application_status`, `contact_person`, `contact_number`, `contact_email_address`, `is_active`, `create_user`, `create_date`, `last_user`, `last_date`) VALUES
+	('1', '01182023400418AA6BFC275AEE4A979B1C64525', 'test', 'test', 'test', '2023-01-19', '2023-01-19', '1', 'DONE', 'test', 'test', 'test', 'Y', NULL, NULL, NULL, NULL);
 
--- Dumping structure for table db_appinv.tbl_application_assigned_personnel
+-- Dumping structure for table db_appinvi.tbl_application_assigned_personnel
 CREATE TABLE IF NOT EXISTS `tbl_application_assigned_personnel` (
   `application_assisgned_personnel_id` varchar(50) NOT NULL,
   `application_version_id` varchar(50) DEFAULT NULL,
@@ -52,11 +61,12 @@ CREATE TABLE IF NOT EXISTS `tbl_application_assigned_personnel` (
   KEY `personnel_id` (`personnel_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table db_appinv.tbl_application_assigned_personnel: ~0 rows (approximately)
-/*!40000 ALTER TABLE `tbl_application_assigned_personnel` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_application_assigned_personnel` ENABLE KEYS */;
+-- Dumping data for table db_appinvi.tbl_application_assigned_personnel: ~0 rows (approximately)
+INSERT IGNORE INTO `tbl_application_assigned_personnel` (`application_assisgned_personnel_id`, `application_version_id`, `personnel_id`, `is_active`, `create_date`, `create_user`, `last_date`, `last_user`) VALUES
+	('1', '1', '01192023481002A7D50071A1EC42F29F2AC89A2', 'Y', NULL, NULL, NULL, NULL),
+	('2', '1', '01192023491032522606F939FB4569927499476', 'Y', NULL, NULL, NULL, NULL);
 
--- Dumping structure for table db_appinv.tbl_application_version
+-- Dumping structure for table db_appinvi.tbl_application_version
 CREATE TABLE IF NOT EXISTS `tbl_application_version` (
   `application_version_id` varchar(50) NOT NULL,
   `application_id` varchar(50) DEFAULT NULL,
@@ -76,51 +86,54 @@ CREATE TABLE IF NOT EXISTS `tbl_application_version` (
   KEY `application_id` (`application_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table db_appinv.tbl_application_version: ~0 rows (approximately)
-/*!40000 ALTER TABLE `tbl_application_version` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_application_version` ENABLE KEYS */;
+-- Dumping data for table db_appinvi.tbl_application_version: ~0 rows (approximately)
+INSERT IGNORE INTO `tbl_application_version` (`application_version_id`, `application_id`, `application_version_start_date`, `application_version_end_date`, `application_features`, `deployment_letter_url`, `system_analysis_design_url`, `deployment_agreement_url`, `version_no`, `is_active`, `create_user`, `create_date`, `last_user`, `last_date`) VALUES
+	('1', '1', '2023-01-19', '2023-01-19', 'test', 'test', 'test', 'test', '1', 'Y', NULL, NULL, NULL, NULL);
 
--- Dumping structure for table db_appinv.tbl_cms_menu
+-- Dumping structure for table db_appinvi.tbl_cms_menu
 CREATE TABLE IF NOT EXISTS `tbl_cms_menu` (
-  `menu_id` int(11) NOT NULL AUTO_INCREMENT,
-  `parent_id` int(11) DEFAULT NULL,
+  `menu_id` int NOT NULL AUTO_INCREMENT,
+  `parent_id` int DEFAULT NULL,
   `menu_name` varchar(100) DEFAULT NULL,
   `page_url` varchar(200) DEFAULT NULL,
-  `menu_level` tinyint(3) unsigned DEFAULT NULL,
-  `sort_order` tinyint(3) unsigned DEFAULT NULL,
+  `menu_level` tinyint unsigned DEFAULT NULL,
+  `sort_order` tinyint unsigned DEFAULT NULL,
   `is_public` varchar(1) NOT NULL,
   `is_active` varchar(1) NOT NULL,
-  `system_module` tinyint(3) unsigned DEFAULT NULL,
+  `system_module` tinyint unsigned DEFAULT NULL,
   `last_user` varchar(30) DEFAULT NULL,
   `last_date` varchar(30) DEFAULT NULL,
   `module` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`menu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_appinv.tbl_cms_menu: ~18 rows (approximately)
-/*!40000 ALTER TABLE `tbl_cms_menu` DISABLE KEYS */;
-INSERT INTO `tbl_cms_menu` (`menu_id`, `parent_id`, `menu_name`, `page_url`, `menu_level`, `sort_order`, `is_public`, `is_active`, `system_module`, `last_user`, `last_date`, `module`) VALUES
+-- Dumping data for table db_appinvi.tbl_cms_menu: ~23 rows (approximately)
+INSERT IGNORE INTO `tbl_cms_menu` (`menu_id`, `parent_id`, `menu_name`, `page_url`, `menu_level`, `sort_order`, `is_public`, `is_active`, `system_module`, `last_user`, `last_date`, `module`) VALUES
 	(1, 0, 'Administration', '', 1, 99, 'N', 'Y', 1, 'System Administrator', '09/16/2020 4:20:21 PM', 'CMISID'),
 	(2, 1, 'User Account', '~/Secured/SystemAdministration/UserEntry.aspx', 2, 1, 'N', 'Y', 1, 'AUTO', '4/17/2014 10:29:54 AM', NULL),
-	(3, 1, 'User Role', '~/Secured/SystemAdministration/UserRole.aspx', 2, 2, 'N', 'Y', 1, 'AUTO', '4/17/2014 10:29:54 AM', NULL),
+	(3, 1, 'User Role', '~/Secured/SystemAdministration/UserRole.aspx', 2, 2, 'N', 'N', 1, 'System Administrator', '01/18/2023 4:43:03 PM', NULL),
 	(4, 1, 'User Permission', '~/Secured/SystemAdministration/UserPermission.aspx', 2, 3, 'N', 'Y', 1, 'AUTO', '4/17/2014 10:29:54 AM', NULL),
-	(5, 1, 'Role Permission', '~/Secured/SystemAdministration/RolePermission.aspx', 2, 4, 'N', 'Y', 1, 'AUTO', '4/17/2014 10:29:54 AM', NULL),
+	(5, 1, 'Role Permission', '~/Secured/SystemAdministration/RolePermission.aspx', 2, 4, 'N', 'N', 1, 'System Administrator', '01/18/2023 4:43:34 PM', NULL),
 	(6, 1, 'CMS', '~/Secured/SystemAdministration/cmsMenu.aspx', 2, 5, 'N', 'Y', 1, 'AUTO', '4/17/2014 10:29:54 AM', NULL),
 	(7, 1, 'Employee Upload', '~/Secured/SystemAdministration/UploadEmployeeInformation.aspx', 2, 6, 'N', 'N', 1, 'System Administrator', '25/01/2018 10:30:40 AM', NULL),
 	(34, 1, 'Encrypt String', '~/Secured/SystemAdministration/EncryptString.aspx', 2, 99, 'N', 'N', 1, 'System Administrator', '25/01/2018 10:30:47 AM', NULL),
-	(54, 1, 'System Users', '~/Secured/SystemAdministration/SystemUsers.aspx', 2, 7, 'N', 'Y', NULL, 'System Administrator', '10/23/2020 5:19:30 PM', NULL),
-	(64, 0, 'User Account', '', 1, 5, 'N', 'Y', NULL, 'System Administrator', '10/06/2021 1:55:05 PM', 'CMISID'),
+	(54, 1, 'System Users', '~/Secured/SystemAdministration/SystemUsers.aspx', 2, 7, 'N', 'N', NULL, 'System Administrator', '01/18/2023 4:42:49 PM', NULL),
+	(64, 0, 'User Account', '', 1, 5, 'N', 'N', NULL, 'System Administrator', '01/19/2023 10:05:50 AM', 'CMISID'),
 	(65, 64, 'User Entry', '~/Secured/UserAdmin/adminUserEntry.aspx', 2, 1, 'N', 'Y', NULL, 'System Administrator', '10/06/2021 1:55:42 PM', NULL),
 	(66, 64, 'User Permission', '~/Secured/UserAdmin/adminUserPermission.aspx', 2, 2, 'N', 'Y', NULL, 'System Administrator', '10/06/2021 2:00:33 PM', NULL),
 	(83, 0, 'Reference', '', 1, 3, 'N', 'Y', NULL, 'System Administrator', '12/7/2022 5:09:20 PM', 'CMISID'),
-	(84, 83, 'Set Signatory', '~/Secured/Reference/RefSetSignatories.aspx', 2, 1, 'N', 'Y', NULL, 'System Administrator', '12/7/2022 5:09:54 PM', NULL),
+	(84, 83, 'Set Signatory', '~/Secured/Reference/RefSetSignatories.aspx', 2, 1, 'N', 'N', NULL, 'System Administrator', '01/18/2023 2:02:20 PM', NULL),
 	(93, 0, 'Application', '', 1, 1, 'N', 'Y', NULL, 'System Administrator', '01/12/2023 10:21:59 AM', 'CMISID'),
 	(94, 93, 'New Application', '~/Secured/AppInventory/NewApplication.aspx', 2, 1, 'N', 'Y', NULL, 'System Administrator', '01/12/2023 3:46:14 PM', NULL),
-	(95, 0, 'aaas', '', 1, 3, 'N', 'Y', NULL, 'System Administrator', '01/12/2023 11:15:41 AM', 'CMISID'),
-	(97, 93, 'App Inventory', '~/Secured/AppInventory/AppInventory.aspx', 2, 2, 'N', 'Y', NULL, 'System Administrator', '01/12/2023 3:56:26 PM', NULL);
-/*!40000 ALTER TABLE `tbl_cms_menu` ENABLE KEYS */;
+	(95, 0, 'Reports', '', 1, 3, 'N', 'Y', NULL, 'System Administrator', '01/19/2023 1:42:02 PM', 'CMISID'),
+	(97, 93, 'App Inventory', '~/Secured/AppInventory/AppInventory.aspx', 2, 2, 'N', 'Y', NULL, 'System Administrator', '01/12/2023 3:56:26 PM', NULL),
+	(98, 83, 'Division', '~/Secured/Reference/refDivision.aspx', 2, 1, 'N', 'Y', NULL, 'System Administrator', '01/18/2023 2:07:41 PM', NULL),
+	(99, 83, 'Clients', '~/Secured/Reference/refClients.aspx', 2, 2, 'N', 'Y', NULL, 'System Administrator', '01/18/2023 4:07:15 PM', NULL),
+	(100, 83, 'User Roles', '~/Secured/Reference/refUserRoles.aspx', 2, 4, 'N', 'Y', NULL, 'System Administrator', '01/19/2023 10:19:17 AM', NULL),
+	(101, 83, 'Personnel', '~/Secured/Reference/refPersonnel.aspx', 2, 3, 'N', 'Y', NULL, 'System Administrator', '01/19/2023 10:19:33 AM', NULL),
+	(102, 95, 'Application', '~/Secured/Reports/rptReports.aspx', 2, 1, 'N', 'Y', NULL, 'System Administrator', '01/19/2023 3:40:40 PM', NULL);
 
--- Dumping structure for table db_appinv.tbl_login_log
+-- Dumping structure for table db_appinvi.tbl_login_log
 CREATE TABLE IF NOT EXISTS `tbl_login_log` (
   `trans_id` varchar(50) NOT NULL,
   `user_id` varchar(50) DEFAULT NULL,
@@ -130,14 +143,47 @@ CREATE TABLE IF NOT EXISTS `tbl_login_log` (
   PRIMARY KEY (`trans_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_appinv.tbl_login_log: ~1 rows (approximately)
-/*!40000 ALTER TABLE `tbl_login_log` DISABLE KEYS */;
-INSERT INTO `tbl_login_log` (`trans_id`, `user_id`, `login_ip`, `login_datetime`, `login_status`) VALUES
+-- Dumping data for table db_appinvi.tbl_login_log: ~0 rows (approximately)
+INSERT IGNORE INTO `tbl_login_log` (`trans_id`, `user_id`, `login_ip`, `login_datetime`, `login_status`) VALUES
 	('0110202301125047FCEBA9213B418FA32D4CBC7', 'admin', '::1', '2023-01-10 12:01:50', 'SUCCESS');
-/*!40000 ALTER TABLE `tbl_login_log` ENABLE KEYS */;
 
--- Dumping structure for table db_appinv.tbl_personnels
-CREATE TABLE IF NOT EXISTS `tbl_personnels` (
+-- Dumping structure for table db_appinvi.tbl_ref_clients
+CREATE TABLE IF NOT EXISTS `tbl_ref_clients` (
+  `client_id` varchar(50) NOT NULL,
+  `client_name` varchar(50) DEFAULT NULL,
+  `is_active` varchar(1) DEFAULT 'Y',
+  `create_user` varchar(50) DEFAULT NULL,
+  `create_date` varchar(50) DEFAULT NULL,
+  `last_user` varchar(50) DEFAULT NULL,
+  `last_date` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`client_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dumping data for table db_appinvi.tbl_ref_clients: ~1 rows (approximately)
+INSERT IGNORE INTO `tbl_ref_clients` (`client_id`, `client_name`, `is_active`, `create_user`, `create_date`, `last_user`, `last_date`) VALUES
+	('01182023400418AA6BFC275AEE4A979B1C64525', 'CLIENT NAME1', 'Y', 'System Administrator', '01/18/2023 4:40:18 PM', 'System Administrator', '01/18/2023 4:40:25 PM');
+
+-- Dumping structure for table db_appinvi.tbl_ref_division
+CREATE TABLE IF NOT EXISTS `tbl_ref_division` (
+  `division_id` varchar(50) NOT NULL,
+  `division_name` varchar(50) DEFAULT NULL,
+  `abbreviation` varchar(50) DEFAULT NULL,
+  `is_active` varchar(1) DEFAULT 'Y',
+  `create_user` varchar(50) DEFAULT NULL,
+  `create_date` varchar(50) DEFAULT NULL,
+  `last_user` varchar(50) DEFAULT NULL,
+  `last_date` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`division_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dumping data for table db_appinvi.tbl_ref_division: ~3 rows (approximately)
+INSERT IGNORE INTO `tbl_ref_division` (`division_id`, `division_name`, `abbreviation`, `is_active`, `create_user`, `create_date`, `last_user`, `last_date`) VALUES
+	('01182023330310FA3538B2EFD74D91A42CAAE39', 'TEST', 'TEST', 'Y', 'System Administrator', '01/18/2023 3:33:10 PM', 'System Administrator', '01/18/2023 3:36:41 PM'),
+	('01182023370306F457FB8EED8943F4B70FE4626', '1231', '123', 'Y', 'System Administrator', '01/18/2023 3:37:06 PM', 'System Administrator', '01/18/2023 3:37:40 PM'),
+	('011820235203220B3E4E8105BF4DBD9071D9294', 'TEST3', 'TEST3', 'Y', 'System Administrator', '01/18/2023 3:52:22 PM', NULL, NULL);
+
+-- Dumping structure for table db_appinvi.tbl_ref_personnels
+CREATE TABLE IF NOT EXISTS `tbl_ref_personnels` (
   `personnel_id` varchar(50) NOT NULL,
   `personnel_name` varchar(50) DEFAULT NULL,
   `personnel_details` varchar(50) DEFAULT NULL,
@@ -153,57 +199,12 @@ CREATE TABLE IF NOT EXISTS `tbl_personnels` (
   KEY `division_id` (`division_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table db_appinv.tbl_personnels: ~0 rows (approximately)
-/*!40000 ALTER TABLE `tbl_personnels` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_personnels` ENABLE KEYS */;
+-- Dumping data for table db_appinvi.tbl_ref_personnels: ~0 rows (approximately)
+INSERT IGNORE INTO `tbl_ref_personnels` (`personnel_id`, `personnel_name`, `personnel_details`, `personnel_role_id`, `division_id`, `is_active`, `create_user`, `create_date`, `last_user`, `last_date`) VALUES
+	('01192023481002A7D50071A1EC42F29F2AC89A2', 'swoOshh', 'bongkiEe', 'DEVELOPER', '01182023330310FA3538B2EFD74D91A42CAAE39', 'Y', 'System Administrator', '01/19/2023 10:48:02 AM', 'System Administrator', '01/19/2023 10:50:00 AM'),
+	('01192023491032522606F939FB4569927499476', 'oshswo', 'pongkiEbaabeee', 'PROJECT MANAGER', '01182023330310FA3538B2EFD74D91A42CAAE39', 'Y', 'System Administrator', '01/19/2023 10:49:32 AM', 'System Administrator', '01/19/2023 10:49:44 AM');
 
--- Dumping structure for table db_appinv.tbl_ref_clients
-CREATE TABLE IF NOT EXISTS `tbl_ref_clients` (
-  `client_id` varchar(50) NOT NULL,
-  `client_name` varchar(50) DEFAULT NULL,
-  `is_active` varchar(1) DEFAULT 'Y',
-  `create_user` varchar(50) DEFAULT NULL,
-  `create_date` varchar(50) DEFAULT NULL,
-  `last_user` varchar(50) DEFAULT NULL,
-  `last_date` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`client_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Dumping data for table db_appinv.tbl_ref_clients: ~0 rows (approximately)
-/*!40000 ALTER TABLE `tbl_ref_clients` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_ref_clients` ENABLE KEYS */;
-
--- Dumping structure for table db_appinv.tbl_ref_division
-CREATE TABLE IF NOT EXISTS `tbl_ref_division` (
-  `division_id` varchar(50) NOT NULL,
-  `division_name` varchar(50) DEFAULT NULL,
-  `abbreviation` varchar(50) DEFAULT NULL,
-  `is_active` varchar(1) DEFAULT 'Y',
-  `create_user` varchar(50) DEFAULT NULL,
-  `create_date` varchar(50) DEFAULT NULL,
-  `last_user` varchar(50) DEFAULT NULL,
-  `last_date` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`division_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Dumping data for table db_appinv.tbl_ref_division: ~0 rows (approximately)
-/*!40000 ALTER TABLE `tbl_ref_division` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_ref_division` ENABLE KEYS */;
-
--- Dumping structure for table db_appinv.tbl_ref_personnel_role
-CREATE TABLE IF NOT EXISTS `tbl_ref_personnel_role` (
-  `personnel_role_id` varchar(50) NOT NULL,
-  `personnel_role_name` varchar(50) DEFAULT NULL,
-  `personnel_role_description` varchar(50) DEFAULT NULL,
-  `is_active` varchar(1) DEFAULT 'Y',
-  PRIMARY KEY (`personnel_role_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Dumping data for table db_appinv.tbl_ref_personnel_role: ~0 rows (approximately)
-/*!40000 ALTER TABLE `tbl_ref_personnel_role` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_ref_personnel_role` ENABLE KEYS */;
-
--- Dumping structure for table db_appinv.tbl_signatories
+-- Dumping structure for table db_appinvi.tbl_signatories
 CREATE TABLE IF NOT EXISTS `tbl_signatories` (
   `trans_id` varchar(50) NOT NULL,
   `form_type` varchar(50) DEFAULT NULL,
@@ -214,9 +215,8 @@ CREATE TABLE IF NOT EXISTS `tbl_signatories` (
   PRIMARY KEY (`trans_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_appinv.tbl_signatories: ~8 rows (approximately)
-/*!40000 ALTER TABLE `tbl_signatories` DISABLE KEYS */;
-INSERT INTO `tbl_signatories` (`trans_id`, `form_type`, `signature_type`, `signatory_name`, `signatory_position`, `sig_specimen`) VALUES
+-- Dumping data for table db_appinvi.tbl_signatories: ~8 rows (approximately)
+INSERT IGNORE INTO `tbl_signatories` (`trans_id`, `form_type`, `signature_type`, `signatory_name`, `signatory_position`, `sig_specimen`) VALUES
 	('1', 'TRAFFIC VIOLATION', 'APPROVED BY', 'HON. ROLANDO "KLAREX" UY', 'CITY MAYOR', NULL),
 	('2', 'TRAFFIC VIOLATION', 'BY AUTHORITY', 'ATTY. KENNETH O. TAMALA, MBA', 'City Legal Officer', NULL),
 	('3', 'BUSINESS TAX', 'APPROVED BY', 'HON. ROLANDO "KLAREX" UY', 'CITY MAYOR', NULL),
@@ -225,31 +225,28 @@ INSERT INTO `tbl_signatories` (`trans_id`, `form_type`, `signature_type`, `signa
 	('6', 'REAL PROPERTY', 'BY AUTHORITY', 'ATTY. KENNETH O. TAMALA, MBA', 'City Legal Officer', NULL),
 	('7', 'STALL HOLDER', 'APPROVED BY', 'HON. ROLANDO "KLAREX" UY', 'CITY MAYOR', NULL),
 	('8', 'STALL HOLDER', 'BY AUTHORITY', 'ATTY. KENNETH O. TAMALA, MBA', 'City Legal Officer', NULL);
-/*!40000 ALTER TABLE `tbl_signatories` ENABLE KEYS */;
 
--- Dumping structure for table db_appinv.tbl_system_default
+-- Dumping structure for table db_appinvi.tbl_system_default
 CREATE TABLE IF NOT EXISTS `tbl_system_default` (
   `default_desc` varchar(50) DEFAULT NULL,
   `default_value` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_appinv.tbl_system_default: ~6 rows (approximately)
-/*!40000 ALTER TABLE `tbl_system_default` DISABLE KEYS */;
-INSERT INTO `tbl_system_default` (`default_desc`, `default_value`) VALUES
+-- Dumping data for table db_appinvi.tbl_system_default: ~6 rows (approximately)
+INSERT IGNORE INTO `tbl_system_default` (`default_desc`, `default_value`) VALUES
 	('default password', 'tl9UUtoyQm2uzSorsCfAEg=e0ea150034825421a'),
 	('notify_sms', 'N'),
 	('consent_desc1', '&nbsp;I, hereby explicitly and unambiguously consent to the collection, use and transfer, in electronic or other form, of my personal data for the purpose of processing my SoloParent ID Application.'),
 	('consent_desc', 'By submitting the data required in this Online Burial Booking, You CONSENT to the collection, generation, use, processing, storage and retention of your personal information and sensitive personal information by the CLENRO for the purpose(s) described in this document. PLEASE ensure that you have completely read and understood \r\n<a onmouseover= "document.getElementById(\'lbDPTerms\').click();">the terms</a> above before submitting. You also authorized the Office to disclose your information to accredited or non-accredited parties.'),
 	('dpn', '<p><strong>BACKGROUND</strong></p>\r\n<p>The Republic Act No. 10173 also known as the Data Privacy Act of 2012 which requires the government and the private sector to follow and comply to fulfill their objective to protect personal data in information and communications systems.</p>\r\n<p>With this, it ensures that entities of the City Government of Cagayan de Oro to implement measures and procedures that guarantee the safety and security of personal data under their control or custody and thereby upholding an individual&rsquo;s data privacy rights; this also applies the principles of Transparency, Legitimate Purpose, and Proportionality in processing of the personal data submitted and stored in the information and communication system.</p>\r\n<p>This Manual serves as a guide or handbook for ensuring the compliance and the City Government with the Data Privacy Act and its Implementing Rules and Regulations (IRR). This also encapsulates the privacy and data protection protocols that is being observed and is being carried out within this entity for specific circumstances (e.g., from collection to destruction), directed toward the fulfillment and realization of the rights of data subjects.</p>\r\n<p>&nbsp;</p>\r\n<p><strong>INTRODUCTION</strong></p>\r\n<p>We, the City Government of Cagayan de Oro respects and values your data privacy rights. It is our duty to give you assurance and confidence to notify you on the submitted with data most specifically your given personal information on how it is being collected, processed, and kept. This is also to inform you on your rights in accordance of the laws and regulations stated and specified in the Republic Act No. 10173 which is also known as the &ldquo;Data Privacy Act of 2012 (DPA)&rdquo;.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><strong>DEFINITION OF TERMS</strong></p>\r\n<ul>\r\n<li><u>Data Privacy Act</u> &ndash; refers to the Republic Act No. 10173 or the Data Privacy Act of 2012 and its implementing rules and regulations (insert url:<u><a href="https://www.privacy.gov.ph/implementing-rules-regulations-data-privacy-act-2012/">https://www.privacy.gov.ph/implementing-rules-regulations-data-privacy-act-2012/</a></u>).</li>\r\n</ul>\r\n<ul>\r\n<li><u>Processing</u> &ndash; refers to any operation or set of operations performed upon personal data including, but not limited to, the collection, recording, organization, storage, updating or modification, retrieval, consultation, use, consolidation, blocking, erasure or destruction of data. Processing may be performed through automated means, or manual processing, if the personal data are contained or are intended to be contained in a filing system;</li>\r\n<li><u>Personal data</u> &ndash; collectively refers to personal information, sensitive personal information, and privileged information;</li>\r\n<li><u>Personal Information</u> &ndash; refers to any information, whether recorded in a material form or not, from which the identity of an individual is apparent or can be reasonably and directly ascertained by the entity holding the information, or when put together with other information would directly and certainly identify an individual;</li>\r\n<li><u>Sensitive Personal Information</u> &ndash; refers to personal data:\r\n<ul>\r\n<li>About an individual&rsquo;s race, ethnic origin, marital status, age, color, and religious, philosophical or political affiliations;</li>\r\n<li>About an individual&rsquo;s health, education, genetic or sexual life of a person, or to any proceeding for any offense committed or alleged to have been committed by such individual, the disposal of such proceedings, or the sentence of any court in such proceedings;</li>\r\n</ul>\r\n</li>\r\n<li><u>Privileged information</u> &ndash; refers to any and all forms of personal data, which, under the Rules of Court and other pertinent laws constitute privileged communication;</li>\r\n<li><u>Data Subject / Clients</u> &ndash; refers to an individual whose personal, sensitive personal, or privileged information is processed; who gives consent to the processors to process the stated data; [<em>Include specific Data Subjects depending on the IS</em>]</li>\r\n<li><u>Information System </u>&ndash; an application or an online application that tools the automation process of personal data with the assigned processor; contains the data privacy consent of the client for the Solo Parent Online Registration;</li>\r\n<li><u>Processing office </u>&ndash; City Social Welfare Development Department given the authority to process the personal, sensitive personal, or privileged information;</li>\r\n<li><u>Processor </u>&ndash; Staff, personnel, processing office, City Government of Cagayan de Oro employee or individual who processes the personal data using the information system with utmost confidentiality, integrity and authenticity;</li>\r\n<li><u>National Privacy Commission (NPC)</u> &ndash; refers as the forefront of not only implementing but complying with the Data Privacy Act of 2012;</li>\r\n<li><u>Data Protection Officer </u>&ndash; Any natural or juridical person or other body involved in the processing of personal data or otherwise be accountable for ensuring compliance with applicable laws and regulations for the protection of data privacy and security.</li>\r\n<li><u>Third Party Sharing and Processing</u> &ndash; Information as well as Personal information of the Data Subjects is being shared and processed outside the entity, subject to cross-border arrangement and cooperation.</li>\r\n<li><u>Data Sharing Agreement</u> &ndash; Needed when third party sharing and processing of data is being made for the relevant process or use of the data of the data subjects.</li>\r\n</ul>\r\n<p>&nbsp;</p>\r\n<p><strong>SCOPE AND LIMITATIONS</strong></p>\r\n<p>All personnel of the City Government of Cagayan de Oro especially the office processing the data, regardless of the type of employment or contractual arrangement, must comply with the terms set out in this Data Privacy Manual. This Data Privacy Manual is publicly posted for the information and transparency of the data being processed through the information systems with the data processors identified in the next section of this manual.</p>\r\n<p>[<em>Can also include here the purpose of the IS on highlighting the scope of the data being processed within the IS</em>]</p>\r\n<p>&nbsp;</p>\r\n<p><strong>PROCESSING OF PERSONAL DATA: WHAT WE PROCESS, HOW WE PROCESS, WHO WILL PROCESS, WHY WE PROCESS</strong></p>\r\n<ol>\r\n<li><u>Collection (What Information Do We Collect)</u>:</li>\r\n</ol>\r\n<p>The processing office with the processor collects the information required in the<strong> Online Burial Booking</strong>. The information provided and submitted by the clients, including their [<em>full name, address, email address, contact number, birthday and other personal data</em> <em>together with their attached documents and the kind of request or process selected</em>]. The information system stores the personal data in the database system assigned for this information system respectively and is being protected through the security protocol set out by the server where the database system is located to give assurance that the data will be protected and secured.</p>\r\n<ol>\r\n<li><u>Use (How We Process Your Information)</u>:</li>\r\n</ol>\r\n<p>Personal data collected shall be used accordingly base on the data subject&rsquo;s request as well as for the processing office and the City Government records which is as follows:</p>\r\n<ol>\r\n<li>Data Subject&rsquo; request:\r\n<ol>\r\n<li>Processing for the service availed</li>\r\n<li>Third Party Processing [<em>if there&rsquo;s any</em>]</li>\r\n</ol>\r\n</li>\r\n<li>Profiling: [<em>fill in</em>]</li>\r\n<li>Research: [<em>fill in</em>]</li>\r\n<li>Others: [<em>fill in</em>]</li>\r\n</ol>\r\n<p>&nbsp;</p>\r\n<ol>\r\n<li><u>Storage, Retention and Destruction</u></li>\r\n</ol>\r\n<p>The processor as well as the information system will ensure that personal data under its custody are protected against any other unlawful processing (misused, modified, interfered, lost or disclosed to unauthorized processors without the Data Sharing Agreement).</p>\r\n<p>The implementation and the management of the information system shall have security practices and processes such as but not limited to the following:</p>\r\n<ul>\r\n<li>Document storage security policies;</li>\r\n<li>Security measures to control access to our systems and premises;</li>\r\n<li>Limitations on access to personal data;</li>\r\n<li>Strict selection of third-party data processors and partners; and</li>\r\n<li>Electronic security systems, such as firewalls, data encryption and transmission of data through a secured file transfer protocol.</li>\r\n</ul>\r\n<p>The personal data shall be kept and maintained up to a certain period or as long as necessary for the purpose for which they were collected or as required by laws and regulations.</p>\r\n<p>[<em>Add retention period here.]</em></p>\r\n<ol>\r\n<li><u>Access</u></li>\r\n</ol>\r\n<p>Due to the sensitive and confidential nature of the personal data under the custody of the City Government, only the client/data subject and the authorized processor shall be allowed to access such personal data, for any purpose, except for those contrary to law, public policy, public order or morals. The authorized processor of this information system are as follows:</p>\r\n<ol>\r\n<li>Processing office: Process your request [<em>please edit if necessary</em>]</li>\r\n<li>City Management Information System Office: ICT system in-charge for the City Government. Data accessibility of this office is only limited to the structure of the database for the development purposes only. This shared accessibility is being protected by a data sharing agreement between the processing office and the developer-CMISO.</li>\r\n<li>Third Party Offices: [<em>if there&rsquo;s any, please enumerate</em>]</li>\r\n</ol>\r\n<p>&nbsp;</p>\r\n<ol>\r\n<li><u>Disclosure and Sharing</u></li>\r\n</ol>\r\n<p>All processors shall maintain the confidentiality and secrecy of all personal data that come to their knowledge and possession, even after resignation, termination of contract, or other contractual relations. Personal data under the custody of the City Government shall be disclosed only pursuant to a lawful purpose, and to authorized recipients of such data.</p>\r\n<p>&nbsp;</p>\r\n<p><strong>SECURITY MEASURED: HOW WE PROTECT YOUR DATA</strong></p>\r\n<p>The Data Privacy of the City Government is being managed by the registered Data Protection Officer, Atty. Reymond Q. Villablanca (currently the Asst. City Legal Officer). The Data Protection Officer who is being assisted by the Compliance Officer for Privacy of each City Government Offices/Department, shall oversee the compliance of the organization with the DPA, its IRR, and other related policies, including the conduct of a Privacy Impact Assessment, implementation of security measures, security incident and data breach protocol, and the inquiry and complaints procedure. All employees will be asked to sign a Non-Disclosure Agreement. All employees with access to personal data shall operate and hold personal data under strict confidentiality if the same is not intended for public disclosure.</p>\r\n<p>Personal data in the custody of the organization may be in digital/electronic format and paper-based/physical format. All personal data being processed by the organization shall be stored in a data room, where paper-based documents are kept in locked filing cabinets while the digital/electronic files are stored in secured server managed by the [<em>who manages the server of this IS</em>]. And only the authorized personnel have the access of the server with the level of access permission.</p>\r\n<p>&nbsp;</p>\r\n<p><strong>BREACH AND SECURITY INCIDENTS: RISK INVOLVE IN PROCESSING</strong></p>\r\n<p>The [<em>server manager/CMISO</em>] shall always maintain a backup file for all personal data under its custody. In the event of a security incident or data breach, it shall always compare the backup with the affected file to determine the presence of any inconsistencies or alterations resulting from the incident or breach.</p>\r\n<p>In case of breach incident, the [<em>server manager/CMISO</em>] will report to the Data Protection Officer together with the responsible Compliance Officer for Privacy of the certain City Government Office for the notification protocol. The [<em>server manager/CMISO</em>] detailed documentation of the incident or breach encountered as will be forwarded to the management and to the NPC depending on the City Government DPO&rsquo;s advise.</p>\r\n<p><strong>HOW MAY CONTACT US FOR INQUIRIES AND COMPLAINTS</strong></p>\r\n<p><strong>You as our Data Subjects have the following rights (RIGHTS OF DATA SUBJECTS):</strong></p>\r\n<p>Personal information will be made available to the clients and authorized processors anytime in case there are requests for correction, modification or deletion.&nbsp; It is the right of the individual owning the personal data to inquire or obtain a copy of the personal information provided to us.</p>\r\n<p>&nbsp;</p>\r\n<ol>\r\n<li>The right to be informed, thus this Data Privacy Manual on how your personal information collected be processed through this Information System.</li>\r\n<li>The right to access, thus you have the access of your personal details and account.</li>\r\n<li>The right to object, thus you can the right not to submit the data so as not the data to be processed.</li>\r\n<li><em>The right to erasure or blocking. [if there&rsquo;s a privilege for client to wipe out his/her data]</em></li>\r\n<li>The right to damages, thus you can request for assessment of your data that might be mishandled to our Data Privacy Officer.</li>\r\n<li>The right to file a complaint, thus you can file a complaint to our Data Privacy Officer to any misused, maliciously disclosed, or improperly disposition of your data.</li>\r\n<li>The right to rectify, thus you have the right to correct your submitted through [<em>the system or through the data information processor</em>].</li>\r\n</ol>\r\n<p>For further inquiries or complaints, you may report or coordinate with our City Government&rsquo;s Data Privacy Officer:</p>\r\n<p><strong>Atty. Reymond Q. Villablanca</strong></p>\r\n<p>Asst. City Legal Officer</p>\r\n<p>City Legal Office</p>\r\n<p>Ground Floor, Executive Building, City Hall, Cagayan de Oro City</p>\r\n<p>Email: dpo.cdo@gmail.com</p>\r\n<p>Contact Number: (088) 857-2260 / +63-960-902-1208</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n'),
 	('notification_limit', '2');
-/*!40000 ALTER TABLE `tbl_system_default` ENABLE KEYS */;
 
--- Dumping structure for table db_appinv.tbl_user_access_permission
+-- Dumping structure for table db_appinvi.tbl_user_access_permission
 CREATE TABLE IF NOT EXISTS `tbl_user_access_permission` (
-  `user_permission_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_permission_id` int NOT NULL AUTO_INCREMENT,
   `user_role_id` varchar(50) DEFAULT NULL,
   `user_id` varchar(50) DEFAULT NULL,
-  `menu_id` int(11) DEFAULT NULL,
+  `menu_id` int DEFAULT NULL,
   `page_url` varchar(200) DEFAULT NULL,
   `can_access` char(1) NOT NULL,
   `can_create` char(1) NOT NULL,
@@ -260,11 +257,10 @@ CREATE TABLE IF NOT EXISTS `tbl_user_access_permission` (
   `last_user` varchar(50) DEFAULT NULL,
   `last_date` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`user_permission_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5347 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5436 DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_appinv.tbl_user_access_permission: ~292 rows (approximately)
-/*!40000 ALTER TABLE `tbl_user_access_permission` DISABLE KEYS */;
-INSERT INTO `tbl_user_access_permission` (`user_permission_id`, `user_role_id`, `user_id`, `menu_id`, `page_url`, `can_access`, `can_create`, `can_update`, `can_delete`, `can_report`, `can_export`, `last_user`, `last_date`) VALUES
+-- Dumping data for table db_appinvi.tbl_user_access_permission: ~290 rows (approximately)
+INSERT IGNORE INTO `tbl_user_access_permission` (`user_permission_id`, `user_role_id`, `user_id`, `menu_id`, `page_url`, `can_access`, `can_create`, `can_update`, `can_delete`, `can_report`, `can_export`, `last_user`, `last_date`) VALUES
 	(497, '4', NULL, 1, '&nbsp;', 'Y', 'N', 'N', 'N', 'N', 'N', 'System Administrator', '6/24/2014 2:18:01 PM'),
 	(498, '4', NULL, 2, 'UserEntry.aspx', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'System Administrator', '6/24/2014 2:18:01 PM'),
 	(499, '4', NULL, 3, 'UserRole.aspx', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'System Administrator', '6/24/2014 2:18:01 PM'),
@@ -541,60 +537,62 @@ INSERT INTO `tbl_user_access_permission` (`user_permission_id`, `user_role_id`, 
 	(5328, '4', 'user1', 5, 'RolePermission.aspx', 'N', 'N', 'N', 'N', 'N', 'N', 'System Administrator', '01/12/2023 11:16:06 AM'),
 	(5329, '4', 'user1', 6, 'cmsMenu.aspx', 'N', 'N', 'N', 'N', 'N', 'N', 'System Administrator', '01/12/2023 11:16:07 AM'),
 	(5330, '4', 'user1', 54, 'SystemUsers.aspx', 'N', 'N', 'N', 'N', 'N', 'N', 'System Administrator', '01/12/2023 11:16:07 AM'),
-	(5331, '1', 'admin', 93, '&nbsp;', 'Y', 'N', 'N', 'N', 'N', 'N', 'System Administrator', '01/12/2023 3:56:38 PM'),
-	(5332, '1', 'admin', 94, 'NewApplication.aspx', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'System Administrator', '01/12/2023 3:56:39 PM'),
-	(5333, '1', 'admin', 97, 'AppInventory.aspx', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'System Administrator', '01/12/2023 3:56:39 PM'),
-	(5334, '1', 'admin', 83, '&nbsp;', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'System Administrator', '01/12/2023 3:56:39 PM'),
-	(5335, '1', 'admin', 84, 'RefSetSignatories.aspx', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'System Administrator', '01/12/2023 3:56:39 PM'),
-	(5336, '1', 'admin', 95, '&nbsp;', 'N', 'N', 'N', 'N', 'N', 'N', 'System Administrator', '01/12/2023 3:56:39 PM'),
-	(5337, '1', 'admin', 64, '&nbsp;', 'Y', 'N', 'N', 'N', 'N', 'N', 'System Administrator', '01/12/2023 3:56:39 PM'),
-	(5338, '1', 'admin', 65, 'adminUserEntry.aspx', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'System Administrator', '01/12/2023 3:56:39 PM'),
-	(5339, '1', 'admin', 66, 'adminUserPermission.aspx', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'System Administrator', '01/12/2023 3:56:39 PM'),
-	(5340, '1', 'admin', 1, '&nbsp;', 'Y', 'N', 'N', 'N', 'N', 'N', 'System Administrator', '01/12/2023 3:56:39 PM'),
-	(5341, '1', 'admin', 2, 'UserEntry.aspx', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'System Administrator', '01/12/2023 3:56:39 PM'),
-	(5342, '1', 'admin', 3, 'UserRole.aspx', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'System Administrator', '01/12/2023 3:56:39 PM'),
-	(5343, '1', 'admin', 4, 'UserPermission.aspx', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'System Administrator', '01/12/2023 3:56:39 PM'),
-	(5344, '1', 'admin', 5, 'RolePermission.aspx', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'System Administrator', '01/12/2023 3:56:39 PM'),
-	(5345, '1', 'admin', 6, 'cmsMenu.aspx', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'System Administrator', '01/12/2023 3:56:40 PM'),
-	(5346, '1', 'admin', 54, 'SystemUsers.aspx', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'System Administrator', '01/12/2023 3:56:40 PM');
-/*!40000 ALTER TABLE `tbl_user_access_permission` ENABLE KEYS */;
+	(5422, '1', 'admin', 93, '&nbsp;', 'Y', 'N', 'N', 'N', 'N', 'N', 'System Administrator', '01/19/2023 1:42:27 PM'),
+	(5423, '1', 'admin', 94, 'NewApplication.aspx', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'System Administrator', '01/19/2023 1:42:27 PM'),
+	(5424, '1', 'admin', 97, 'AppInventory.aspx', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'System Administrator', '01/19/2023 1:42:27 PM'),
+	(5425, '1', 'admin', 83, '&nbsp;', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'System Administrator', '01/19/2023 1:42:27 PM'),
+	(5426, '1', 'admin', 98, 'refDivision.aspx', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'System Administrator', '01/19/2023 1:42:27 PM'),
+	(5427, '1', 'admin', 99, 'refClients.aspx', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'System Administrator', '01/19/2023 1:42:27 PM'),
+	(5428, '1', 'admin', 101, 'refPersonnel.aspx', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'System Administrator', '01/19/2023 1:42:27 PM'),
+	(5429, '1', 'admin', 100, 'refUserRoles.aspx', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'System Administrator', '01/19/2023 1:42:28 PM'),
+	(5430, '1', 'admin', 95, '&nbsp;', 'Y', 'N', 'N', 'N', 'N', 'N', 'System Administrator', '01/19/2023 1:42:28 PM'),
+	(5431, '1', 'admin', 102, 'rptReports.aspx', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'System Administrator', '01/19/2023 1:42:28 PM'),
+	(5432, '1', 'admin', 1, '&nbsp;', 'Y', 'N', 'N', 'N', 'N', 'N', 'System Administrator', '01/19/2023 1:42:28 PM'),
+	(5433, '1', 'admin', 2, 'UserEntry.aspx', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'System Administrator', '01/19/2023 1:42:28 PM'),
+	(5434, '1', 'admin', 4, 'UserPermission.aspx', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'System Administrator', '01/19/2023 1:42:28 PM'),
+	(5435, '1', 'admin', 6, 'cmsMenu.aspx', 'Y', 'Y', 'Y', 'N', 'N', 'N', 'System Administrator', '01/19/2023 1:42:28 PM');
 
--- Dumping structure for table db_appinv.tbl_user_info
+-- Dumping structure for table db_appinvi.tbl_user_info
 CREATE TABLE IF NOT EXISTS `tbl_user_info` (
   `user_id` varchar(50) DEFAULT NULL,
   `user_name` varchar(50) DEFAULT NULL,
-  `user_role_id` int(11) DEFAULT NULL,
+  `user_role_id` int DEFAULT NULL,
   `user_password` varchar(100) DEFAULT NULL,
   `is_active` char(1) DEFAULT NULL,
   `last_user` varchar(50) DEFAULT NULL,
   `last_date` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_appinv.tbl_user_info: ~3 rows (approximately)
-/*!40000 ALTER TABLE `tbl_user_info` DISABLE KEYS */;
-INSERT INTO `tbl_user_info` (`user_id`, `user_name`, `user_role_id`, `user_password`, `is_active`, `last_user`, `last_date`) VALUES
+-- Dumping data for table db_appinvi.tbl_user_info: ~3 rows (approximately)
+INSERT IGNORE INTO `tbl_user_info` (`user_id`, `user_name`, `user_role_id`, `user_password`, `is_active`, `last_user`, `last_date`) VALUES
 	('admin', 'System Administrator', 1, 'Jzh3JxjBHfUm7X2gxsMbWg=ce3046478f50b4b56', 'Y', 'INITIALIZED', '4/17/2014 10:29:54 AM'),
 	('legal', 'Legal User', 4, 'tl9UUtoyQm2uzSorsCfAEg=e0ea150034825421a', 'Y', 'System Administrator', '12/12/2022 11:35:46 AM'),
 	('user1', 'User Name Sample', 4, 'tl9UUtoyQm2uzSorsCfAEg=e0ea150034825421a', 'Y', '', '01/12/2023 11:07:01 AM');
-/*!40000 ALTER TABLE `tbl_user_info` ENABLE KEYS */;
 
--- Dumping structure for table db_appinv.tbl_user_role
+-- Dumping structure for table db_appinvi.tbl_user_role
 CREATE TABLE IF NOT EXISTS `tbl_user_role` (
-  `user_role_id` int(11) NOT NULL,
+  `user_role_id` varchar(50) NOT NULL,
   `user_role_name` varchar(50) DEFAULT NULL,
-  `user_role_description` varchar(200) DEFAULT NULL,
+  `user_role_description` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `user_role_type` varchar(15) DEFAULT '',
   `is_active` char(1) NOT NULL,
+  `create_user` varchar(50) DEFAULT NULL,
+  `create_date` varchar(50) DEFAULT NULL,
   `last_user` varchar(50) DEFAULT NULL,
-  `last_date` varchar(50) DEFAULT NULL
+  `last_date` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`user_role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table db_appinv.tbl_user_role: ~2 rows (approximately)
-/*!40000 ALTER TABLE `tbl_user_role` DISABLE KEYS */;
-INSERT INTO `tbl_user_role` (`user_role_id`, `user_role_name`, `user_role_description`, `is_active`, `last_user`, `last_date`) VALUES
-	(1, 'Administrator', 'System Administrator', 'Y', 'INITIALIZED', '4/17/2014 10:29:54 AM'),
-	(4, 'User', '', 'Y', 'System Administrator', '25/01/2018 9:25:34 AM');
-/*!40000 ALTER TABLE `tbl_user_role` ENABLE KEYS */;
+-- Dumping data for table db_appinvi.tbl_user_role: ~5 rows (approximately)
+INSERT IGNORE INTO `tbl_user_role` (`user_role_id`, `user_role_name`, `user_role_description`, `user_role_type`, `is_active`, `create_user`, `create_date`, `last_user`, `last_date`) VALUES
+	('011920230810541E61B', 'ADMINISTRATOR', 'SYSTEM ADMINISTRATOR', 'System', 'Y', NULL, NULL, 'System Administrator', '01/19/2023 10:08:54 AM'),
+	('1', 'Administrator', 'Super Administrator', 'System', 'Y', NULL, NULL, 'INITIALIZED', '4/17/2014 10:29:54 AM'),
+	('4', 'USER', 'SYSTEM USER', 'System', 'Y', NULL, NULL, 'System Administrator', '01/19/2023 10:11:22 AM'),
+	('DEVELOPER', 'DEVELOPER', 'SYSTEM DEVELOPER', 'Personnel', 'Y', NULL, NULL, 'System Administrator', '01/19/2023 10:09:22 AM'),
+	('PROJECT MANAGER', 'PROJECT MANAGER', 'PROJECT MANAGER', 'Personnel', 'Y', NULL, NULL, 'System Administrator', '01/19/2023 10:11:18 AM');
 
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
