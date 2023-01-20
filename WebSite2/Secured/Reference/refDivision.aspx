@@ -13,20 +13,19 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <asp:Button runat="server" ID="btnAdd" CssClass="btn btn-primary" Text="Add" />
+                        <asp:Button runat="server" ID="btnAdd" CssClass="btn btn-primary  mb-3" Text="Add" />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <asp:TextBox runat="server" ID="txtSearch" CssClass="input-field form-control" Style="text-transform: uppercase" MaxLength="100" placeholder=""></asp:TextBox>
-                        <span class="input-group-btn">
-                            <asp:Button runat="server" ID="btnSearch" CssClass="btn btn-primary" Text="Search" />
-                        </span>
-                    </div>
+                        <div class="input-group">
+                            <asp:TextBox runat="server" ID="txtSearch" CssClass="input-field form-control  mb-3" Style="text-transform: uppercase" MaxLength="100" placeholder=""></asp:TextBox>
+                            <asp:Button runat="server" ID="btnSearch" CssClass="btn btn-primary  mb-3" Text="Search" />
+                        </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <asp:GridView runat="server" ID="_gv" HeaderStyle-Font-Size="11px" CssClass="" PageSize="15" EmptyDataText="NO RECORD FOUND"
+                        <asp:GridView runat="server" ID="_gv" HeaderStyle-Font-Size="11px" CssClass="table table-row-bordered table-row-dashed gy-5" PageSize="15" EmptyDataText="NO RECORD FOUND"
                             PagerStyle-CssClass="pgr" AlternatingRowStyle-CssClass="alt" AutoGenerateColumns="false"
                             GridLines="None" Font-Names="Arial" Font-Size="12px" ForeColor="#000000" AllowPaging="true">
                             <Columns>
@@ -49,8 +48,8 @@
 
     <%--modal/s--%>
 
-   
-     <div id="pnlEdit"  class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false">
+
+    <div id="pnlEdit" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog modal-lg">
             <!-- Modal content-->
             <div class="modal-content" style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
@@ -108,10 +107,10 @@
             </div>
         </div>
     </div>
-   
 
-  
-      <asp:UpdatePanel runat="server" ID="upUpdate">
+
+
+    <asp:UpdatePanel runat="server" ID="upUpdate">
         <ContentTemplate>
             <asp:HiddenField runat="server" ID="hfTransId"></asp:HiddenField>
             <wucConfirmBox:wucConfirmBox runat="server" ID="thisConfirmBox" />

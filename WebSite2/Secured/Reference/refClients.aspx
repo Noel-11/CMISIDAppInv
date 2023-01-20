@@ -12,21 +12,21 @@
                 <h2 class="text-uppercase">Clients<span runat="server" id="spanAppType"></span></h2>
 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12  mb-3">
                         <asp:Button runat="server" ID="btnAdd" CssClass="btn btn-primary" Text="Add" />
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <asp:TextBox runat="server" ID="txtSearch" CssClass="input-field form-control" Style="text-transform: uppercase" MaxLength="100" placeholder=""></asp:TextBox>
-                        <span class="input-group-btn">
-                            <asp:Button runat="server" ID="btnSearch" CssClass="btn btn-primary" Text="Search" />
-                        </span>
+                    <div class="col-md-12  mb-3">
+                        <div class="input-group">
+                             <asp:TextBox runat="server" ID="txtSearch" CssClass="input-field form-control" Style="text-transform: uppercase" MaxLength="100" placeholder=""></asp:TextBox>
+                             <asp:Button runat="server" ID="btnSearch" CssClass="btn btn-primary" Text="Search" />
+                        </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <asp:GridView runat="server" ID="_gv" HeaderStyle-Font-Size="11px" CssClass="" PageSize="15" EmptyDataText="NO RECORD FOUND"
+                        <asp:GridView runat="server" ID="_gv" HeaderStyle-Font-Size="11px" CssClass="table table-row-bordered table-row-dashed gy-5" PageSize="15" EmptyDataText="NO RECORD FOUND"
                             PagerStyle-CssClass="pgr" AlternatingRowStyle-CssClass="alt" AutoGenerateColumns="false"
                             GridLines="None" Font-Names="Arial" Font-Size="12px" ForeColor="#000000" AllowPaging="true">
                             <Columns>
@@ -63,7 +63,7 @@
                         </div>
                         <div class="modal-body container-fluid">
                          
-                            <div class="row">
+                            <div class="row mt-4">
                                 <div class="col-md-12">
                                     <div class="form-outline mb-4">
                                         <asp:TextBox runat="server" ID="txtClientName" class="form-control form-control-lg" placeholder="Client Name"></asp:TextBox>
@@ -71,11 +71,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row mb-3">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <span class="input-group-addon">Is Active? : </span>
+                                            <span class="input-group-text">Is Active? : </span>
                                             <asp:RadioButtonList runat="server" ID="rblIsActive" CssClass="form-control" RepeatDirection="Horizontal">
                                                 <asp:ListItem Text="&nbsp;Yes&nbsp;&nbsp;" Value="Y" Selected="True"></asp:ListItem>
                                                 <asp:ListItem Text="&nbsp;No" Value="N"></asp:ListItem>
@@ -84,7 +84,8 @@
                                     </div>
                                 </div>
                             </div>
-
+                        </div>
+                        <div class="modal-footer">
                             <div class="row">
                                 <div class="col-md-6">
                                     <asp:Button runat="server" ID="btnClear" Width="100%" CssClass="btn btn-danger" Text="Clear" />

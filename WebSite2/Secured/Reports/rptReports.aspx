@@ -25,8 +25,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" style="font-weight: bold">Personnel</span>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" style="font-weight: bold">Personnel</span>
                                         <asp:DropDownList runat="server" ID="ddlPersonnel" CssClass="form-control"></asp:DropDownList>
                                     </div>
                                 </div>
@@ -34,8 +34,8 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" style="font-weight: bold">Client</span>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" style="font-weight: bold">Client</span>
                                         <asp:DropDownList runat="server" ID="ddlClient" CssClass="form-control"></asp:DropDownList>
                                     </div>
                                 </div>
@@ -46,10 +46,10 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" style="font-weight: bold">From:</span>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" style="font-weight: bold">From:</span>
                                         <asp:TextBox runat="server" ID="txtDateFrom" CssClass="input-field form-control" TextMode="Date"></asp:TextBox>
-                                        <span class="input-group-addon" style="font-weight: bold">To:</span>
+                                        <span class="input-group-text" style="font-weight: bold">To:</span>
                                         <asp:TextBox runat="server" ID="txtDateTo" CssClass="input-field form-control" TextMode="Date"></asp:TextBox>
                                     </div>
                                 </div>

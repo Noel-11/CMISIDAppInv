@@ -22,7 +22,7 @@
         <link href="<%=ResolveClientUrl("~/Scripts/bootstrap_theme/aos/aos.css")%>" rel="stylesheet" />
         <link href="<%=ResolveClientUrl("~/Scripts/bootstrap_theme/glightbox/css/glightbox.min.css")%>" rel="stylesheet" />
         <link href="<%=ResolveClientUrl("~/Scripts/bootstrap_theme/swiper/swiper-bundle.min.css")%>" rel="stylesheet" />
-        
+
         <!-- Template Main CSS File -->
         <link href="<%=ResolveClientUrl("~/Scripts/bootstrap_theme/main.css")%>" rel="stylesheet" />
 
@@ -35,10 +35,11 @@
 
         <%-- MULTISTEP --%>
         <link href="<%=ResolveClientUrl("~/Scripts/multistep/css/bs.step.css")%>" rel="stylesheet" />
-
+        
         <%-- File Upload --%>
         <%--  <link href="<%=ResolveClientUrl("~/Scripts/kratik/fileinput/css/fileinput.min.css")%>" rel="stylesheet" />
         <script defer="defer" src="<%=ResolveClientUrl("~/Scripts/kratik/fileinput/js/fileinput.min.js")%>"></script>--%>
+
     </asp:ContentPlaceHolder>
 
 
@@ -129,6 +130,7 @@
 
     <!-- Template Main JS File -->
     <script src="<%=ResolveClientUrl("~/Scripts/bootstrap_theme/js/main.js")%>"></script>
+    <script src="<%=ResolveClientUrl("~/Scripts/assets/js/scripts.bundle.js")%>"></script>
 
     <!-- MULTISTEP JS File -->
     <%--<script src="<%=ResolveClientUrl("~/Scripts/multistep/js/bs.step.js")%>"></script>--%>

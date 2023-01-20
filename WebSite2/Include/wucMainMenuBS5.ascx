@@ -1,96 +1,35 @@
 ﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="wucMainMenuBS5.ascx.vb" Inherits="Include_wucMainMenuBS" %>
 
-<style type="text/css">
-    .navbar {
-        margin-top: 20px;
-    }
-</style>
+<!--begin::Brand-->
+<div class="center-logo text-center pt-9 pb-7 px-9" id="kt_aside_logo">
+    <!--begin::Logo-->
+    <a href="#" class="text-center">
+        <img src="<%=ResolveClientUrl("~/Images/person.png")%>" width="100" />
+    </a>
+    <!--end::Logo-->
+    <div class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <asp:Label runat="server" ID="lblTextUser" Font-Names="Arial" Text="Admin" Font-Size="12px" Font-Bold="true"></asp:Label>
+        </a>
 
-<!-- Sidebar-->
-<nav class="border-end bg-white" id="sidebar-wrapper">
-    <div class="sidebar-heading border-bottom bg-light">CMISID APPLICATION</div>
-    <div class="list-group list-group-flush" runat="server" id="navMenu">
-        <%--<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Dashboard</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Shortcuts</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Overview</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>--%>
-        <%--<a
-            href="#"
-            class="list-group-item list-group-item-action py-2 ripple collapsed" data-bs-toggle="collapse" data-bs-target="#menuDrop1" aria-expanded="false">
-            <i class="fas fa-chart-area fa-fw me-3"></i><span>Webiste traffic</span>
-        </a>--%>
-
-        <%--        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!" data-bs-toggle="collapse" data-bs-target="#menuDrop1" aria-expanded="false">Status</a>
-
-        <div class="collapse" id="menuDrop1" style="">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1">
-                <li><a href="#" class="link-dark rounded">New</a></li>
-                <li><a href="#" class="link-dark rounded">Processed</a></li>
-                <li><a href="#" class="link-dark rounded">Shipped</a></li>
-                <li><a href="#" class="link-dark rounded">Returned</a></li>
-            </ul>
-        </div>--%>
-
-
-       <%-- <a href='/Secured/Home.aspx' class='list-group-item list-group-item-action list-group-item-light p-3'>Home</a>
-        <a href='#' class='list-group-item list-group-item-action list-group-item-light p-3' data-bs-toggle='collapse' data-bs-target="#menu1" aria-expanded='false'>Application</a>
-        <div class='collapse' id="menu1">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1">
-                <li><a href='/Secured/TaxRelief/EntryApplication.aspx' class='link-dark rounded'>Entry</a></li>
-                <li><a href='/Secured/TaxRelief/ValidateRegistration.aspx' class='link-dark rounded'>Validate</a></li>
-                <li><a href='/Secured/TaxRelief/PrintAvailment.aspx' class='link-dark rounded'>Print Availment</a></li>
-                <li><a href='/Secured/TaxRelief/AvailmentNotify.aspx' class='link-dark rounded'>Notify to Claim</a></li>
-                <li><a href='/Secured/TaxRelief/AvailmentTagClaimed.aspx' class='link-dark rounded'>Tag Claimed</a></li>
-                <li><a href='/Secured/TaxRelief/TagStatus.aspx' class='link-dark rounded'>Tag Status</a></li>
-                <li><a href='/Secured/TaxRelief/AvailmentTagPaid.aspx' class='link-dark rounded'>Tag Paid</a></li>
-            </ul>
-        </div>
-
-        <a href='' class='list-group-item list-group-item-action list-group-item-light p-3' data-bs-toggle='collapse' data-bs-target='#83' aria-expanded='false'>Reference</a>
-        <div class='collapse' id='83' style=''>
-            <ul class='btn-toggle-nav list-unstyled fw-normal pb-1'>
-                <li><a href='/Secured/Reference/RefSetSignatories.aspx' class='link-dark rounded'>Set Signatory</a></li>
-            </ul>
-        </div>
-        <a href='' class='list-group-item list-group-item-action list-group-item-light p-3' data-bs-toggle='collapse' data-bs-target='#60' aria-expanded='false'>Report</a><div class='collapse' id='60' style=''>
-            <ul class='btn-toggle-nav list-unstyled fw-normal pb-1'>
-                <li><a href='/Secured/TaxRelief/Report/ReportUserRecord.aspx' class='link-dark rounded'>User Entry Record</a></li>
-                <li><a href='/Secured/TaxRelief/Report/ReportAvailmentAmount.aspx' class='link-dark rounded'>Availment Amount</a></li>
-            </ul>
-        </div>
-        <a href='' class='list-group-item list-group-item-action list-group-item-light p-3' data-bs-toggle='collapse' data-bs-target='#64' aria-expanded='false'>User Account</a><div class='collapse' id='64' style=''>
-            <ul class='btn-toggle-nav list-unstyled fw-normal pb-1'>
-                <li><a href='/Secured/UserAdmin/adminUserEntry.aspx' class='link-dark rounded'>User Entry</a></li>
-                <li><a href='/Secured/UserAdmin/adminUserPermission.aspx' class='link-dark rounded'>User Permission</a></li>
-            </ul>
-        </div>
-        <a href='' class='list-group-item list-group-item-action list-group-item-light p-3' data-bs-toggle='collapse' data-bs-target='#1' aria-expanded='false'>Administration</a>
-           <div class='collapse' id='1' style=''>
-            <ul class='btn-toggle-nav list-unstyled fw-normal pb-1'>
-                <li><a href='/Secured/SystemAdministration/UserEntry.aspx' class='link-dark rounded'>User Account</a></li>
-                <li><a href='/Secured/SystemAdministration/UserRole.aspx' class='link-dark rounded'>User Role</a></li>
-                <li><a href='/Secured/SystemAdministration/UserPermission.aspx' class='link-dark rounded'>User Permission</a></li>
-                <li><a href='/Secured/SystemAdministration/RolePermission.aspx' class='link-dark rounded'>Role Permission</a></li>
-                <li><a href='/Secured/SystemAdministration/cmsMenu.aspx' class='link-dark rounded'>CMS</a></li>
-                <li><a href='/Secured/SystemAdministration/SystemUsers.aspx' class='link-dark rounded'>System Users</a></li>
-            </ul>
-        </div>--%>
-       <%-- <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!" data-bs-toggle="collapse" data-bs-target="#tt" aria-expanded="false">Status</a>
-
-        <div class="collapse" id="tt" style="">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1">
-                <li><a href="#" class="link-dark rounded">New</a></li>
-                <li><a href="#" class="link-dark rounded">Processed</a></li>
-                <li><a href="#" class="link-dark rounded">Shipped</a></li>
-                <li><a href="#" class="link-dark rounded">Returned</a></li>
-            </ul>
-        </div>--%>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li><a class="dropdown-item" id="logout" href="#" runat="server">Logout</a></li>
+            <li><a class="dropdown-item" id="ChangePassword" href="#"  runat="server">Change Password</a></li>
+        </ul>
     </div>
-</nav>
-
-<!-- Sidebar -->
+</div>
+<!--end::Brand-->
+<!--begin::Aside menu-->
+<div class="aside-menu flex-column-fluid px-3 px-lg-6">
+    <!--begin::Aside Menu-->
+    <!--begin::Menu-->
+    <div class="menu menu-column menu-pill menu-title-gray-600 menu-icon-gray-400 menu-state-primary menu-arrow-gray-500 menu-active-bg-primary fw-bold fs-5 my-5 mt-lg-2 mb-lg-0" id="kt_aside_menu" data-kt-menu="true">
+        <div class="hover-scroll-y me-n3 pe-3" id="kt_aside_menu_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto" data-kt-scroll-wrappers="#kt_aside_menu" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer" data-kt-scroll-offset="20px" style="height: 238px;">
+            <div runat="server" id="navMenu"></div>
+        </div>
+    </div>
+    <!--end::Menu-->
+</div>
+<!--end::Aside menu-->
 
 
 

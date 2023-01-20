@@ -23,85 +23,118 @@
         <link href="<%=ResolveClientUrl("~/Scripts/Bootstrap5/NavbarTheme/css/styles.css")%>" rel="stylesheet" />
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
-
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
 
         <%--<script src="<%=ResolveClientUrl("~/Scripts/Bootstrap5/js/bootstrap.bundle.min.js")%>"></script>--%>
 
         <%--<link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />--%>
         <%--  <link href="https://getbootstrap.com/docs/5.0/examples/sidebars/sidebars.css" rel="stylesheet" />
         <link rel="manifest" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/manifest.json" />--%>
+
+        <link href="<%=ResolveClientUrl("~/Scripts/assets/css/style.bundle.css")%>" rel="stylesheet" />
     </asp:ContentPlaceHolder>
 
     <style>
-       
+        .bg-blue {
+            background-color: #276fa8;
+        }
+
+        .btn-warning {
+            background-color: #0e3d59 !important;
+        }
+
+        .menu-link {
+            color: #FFF !important;
+        }
+
+        body {
+            background-color: #FFF !important;
+        }
     </style>
 
 </head>
 
-<body>
+<body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed aside-fixed">
 
     <form id="form1" role="form" method="post" runat="server" autocomplete="off" defaultbutton="btnDoNothing">
         <asp:Button ID="btnDoNothing" runat="server" Enabled="false" Style="display: none;" />
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
-
-        <div class="d-flex" id="wrapper">
-
-            <!-- Sidebar-->
-            <uc4:wucMainMenu ID="wucMainMenu2" runat="server" />
-            <!-- Sidebar-->           
-
-            <!-- Page content wrapper-->
-            <div id="page-content-wrapper">
-                <!-- Top navigation-->
-                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                    <div class="container-fluid">
-                        <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
-                        <%--<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                                <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#!">Action</a>
-                                        <a class="dropdown-item" href="#!">Another action</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#!">Something else here</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>--%>
+        <!--begin::Main-->
+        <div class="d-flex flex-column flex-root">
+            <!--begin::Page-->
+            <div class="page d-flex flex-row flex-column-fluid">
+                <div id="kt_aside" class="aside bg-blue" data-kt-drawer="true" data-kt-drawer-name="aside" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'200px', '300px': '250px'}" data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_aside_toggle">
+                    <!--start::Aside menu-->
+                    <uc4:wucMainMenu ID="wucMainMenu2" runat="server" />
+                    <!--end::Aside menu-->
+                    <!--begin::Footer-->
+                    <div class="aside-footer flex-column-auto px-6 pb-5 text-center" id="kt_aside_footer">
+                        <img src="<%=ResolveClientUrl("~/Images/ICTLogo.png")%>" width="100" class="img-fluid" alt="" />
+                        <div class="text-white">CMISID APPLICATION INVENTORY SYSTEM</div>
                     </div>
-                </nav>
-
-                <!-- Page content-->
-                <div class="container-fluid">
-
-                    <asp:ContentPlaceHolder ID="cpConTent" runat="server">
-                    </asp:ContentPlaceHolder>
-
+                    <!--end::Footer-->
                 </div>
+                <!--end::Aside-->
+                <!-- Page content wrapper-->
+                <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+                    <!--begin::Header-->
+                    <div id="kt_header" class="header" data-kt-sticky="true" data-kt-sticky-name="header" data-kt-sticky-offset="{default: '200px', lg: '300px'}">
+                        <!--begin::Container-->
+                        <div class="container-fluid d-flex align-items-stretch justify-content-between" id="kt_header_container">
+                            <!--begin::Logo bar-->
+							<div class="d-flex d-lg-none align-items-center flex-grow-1">
+								<!--begin::Aside Toggle-->
+								<div class="btn btn-icon btn-circle btn-active-light-primary ms-n2 me-1" id="kt_aside_toggle">
+									<!--begin::Svg Icon | path: icons/duotone/Text/Menu.svg-->
+									<span class="svg-icon svg-icon-2x">
+										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+												<rect x="0" y="0" width="24" height="24" />
+												<rect fill="#000000" x="4" y="5" width="16" height="3" rx="1.5" />
+												<path d="M5.5,15 L18.5,15 C19.3284271,15 20,15.6715729 20,16.5 C20,17.3284271 19.3284271,18 18.5,18 L5.5,18 C4.67157288,18 4,17.3284271 4,16.5 C4,15.6715729 4.67157288,15 5.5,15 Z M5.5,10 L18.5,10 C19.3284271,10 20,10.6715729 20,11.5 C20,12.3284271 19.3284271,13 18.5,13 L5.5,13 C4.67157288,13 4,12.3284271 4,11.5 C4,10.6715729 4.67157288,10 5.5,10 Z" fill="#000000" opacity="0.3" />
+											</g>
+										</svg>
+									</span>
+									<!--end::Svg Icon-->
+								</div>
+								<!--end::Aside Toggle-->
+								<!--begin::Logo-->
+								<a href="index.html" class="d-lg-none">
+									<img alt="Logo" src="<%=ResolveClientUrl("~/Images/ICTlogo2.png")%>" class="max-h-50px" />
+								</a>
+								<!--end::Logo-->
+							</div>
+							<!--end::Logo bar-->
+                            <!--begin::Toolbar wrapper-->
+							<div class="d-flex align-items-stretch flex-shrink-0">
+								<!--begin::User-->
+                            </div>
+                        </div>
+                    </div>
+                    <!--begin::Content-->
+                    <div class="content d-flex flex-column flex-column-fluid fs-6" id="kt_content">
+                        <!--begin::Container-->
+                        <div class="container" id="kt_content_container">
+                            <asp:ContentPlaceHolder ID="cpConTent" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </div>
+                    </div>
+
+                    <!-- End Footer -->
+                </div>
+
+
             </div>
         </div>
-        <!--Main Navigation-->
-
-
-        <!-- ======= Footer ======= -->
-          <div>
-            <uc1:sHeader ID="sHeader1" runat="server" />
-        </div>
-        <!-- Footer -->
-
-        <!-- End Footer -->
-
-
     </form>
+
+
 
     <script src="<%=ResolveClientUrl("~/Scripts/Bootstrap5/js/bootstrap.min.js")%>"></script>
     <script src="<%=ResolveClientUrl("~/Scripts/Bootstrap5/NavbarTheme/js/scripts.js")%>"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="<%=ResolveClientUrl("~/Scripts/assets/js/scripts.bundle.js")%>"></script>
 </body>
 </html>
 

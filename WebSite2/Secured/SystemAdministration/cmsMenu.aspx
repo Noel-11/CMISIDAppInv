@@ -3,20 +3,20 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cpConTent" runat="Server">
 
       <div class="container-fluid">
-            <div class="panel panel-warning">
-                <div class="panel-heading" style="text-align: center">
-                    <asp:Label runat="server" ID="lblPageTitle" Text="Menu" Font-Size="18px"
+            <div class="card">
+                <div class="card-header">
+                    <asp:Label runat="server" ID="lblPageTitle" CssClass="card-title" Text="Menu" Font-Size="18px"
                         ForeColor="#000000"></asp:Label>
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     <table style="width: 100%">
                         <tr>
                             <td style="text-align: left; width: 60%">
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <span class="input-group-addon">Search </span>
+                                        <span class="input-group-text">Search </span>
 
-                                        <asp:TextBox runat="server" Width="100%" CssClass="form-control" Style="z-index: 0; text-transform: uppercase;" ID="txtSearch"></asp:TextBox>
+                                        <asp:TextBox runat="server" CssClass="form-control" Style="z-index: 0; text-transform: uppercase;" ID="txtSearch"></asp:TextBox>
                                     </div>
                                 </div>
 
@@ -32,7 +32,7 @@
                     </table>
                    <button runat="server" onserverclick="btnBack_Click" type="button" id="btnReturn" class="btn btn-info btn-default" causesvalidation="false"><span class="glyphicon glyphicon-backward">&nbsp;BACK</span> </button>
                    <br />
-                     <asp:GridView runat="server" ID="_gv" SkinID="gvDefault">
+                     <asp:GridView runat="server" ID="_gv" CssClass="table table-row-bordered table-row-dashed gy-5" SkinID="gvDefault">
                         <Columns>
                             <asp:TemplateField HeaderText="Menu Id">
                                 <ItemTemplate>
