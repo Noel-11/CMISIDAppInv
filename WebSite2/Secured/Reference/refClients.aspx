@@ -89,7 +89,6 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <asp:Button runat="server" ID="btnClear" Width="100%" CssClass="btn btn-danger" Text="Clear" />
-
                                 </div>
                                 <div class="col-md-6">
                                     <asp:Button runat="server" ID="btnSave" Width="100%" CssClass="btn btn-primary" Text="Save" ValidationGroup="Save" />
