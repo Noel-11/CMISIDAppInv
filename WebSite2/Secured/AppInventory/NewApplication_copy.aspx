@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="NewApplication.aspx.vb" Inherits="Secured_AppInventory_NewApplication" MasterPageFile="~/MasterPage/Admin.master" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="NewApplication_copy.aspx.vb" Inherits="Secured_AppInventory_NewApplication" MasterPageFile="~/MasterPage/Admin.master" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cpConTent" runat="Server">

@@ -34,7 +34,7 @@ Partial Class Secured_Reference_refDivision
     Protected Sub btnSearch_Click1(sender As Object, e As EventArgs) Handles btnSearch.Click
         fillGridView()
     End Sub
-
+   
     Protected Sub fillGridView()
         _dtGV = _clsRefDivision.browseRefDivision(txtSearch.Text.Trim)
         _gv.DataSource = _dtGV
@@ -52,6 +52,10 @@ Partial Class Secured_Reference_refDivision
     Protected Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         clearField()
         btnSave.Text = "Save"
+
+        thisConfirmBox.showConfirmBox()
+
+        'ScriptManager.RegisterStartupScript(Page, Page.GetType(), "pnlEdit", "var myModal = new bootstrap.Modal(document.getElementById('pnlEdit'), {});  myModal.show();", True)
 
         ScriptManager.RegisterStartupScript(Page, Page.GetType(), "pnlEdit", "var myModal = new bootstrap.Modal(document.getElementById('pnlEdit'), {});  myModal.show();", True)
 
@@ -111,7 +115,7 @@ Partial Class Secured_Reference_refDivision
 
 #End Region
 
-
-
+    
+  
 End Class
 

@@ -91,6 +91,7 @@
                                     placeholder="Enter User ID" />--%>
                                 <asp:TextBox runat="server" ID="txtUserId" class="form-control form-control-lg" placeholder="Enter User ID"></asp:TextBox>
                                 <label class="form-label" for="form3Example3">User ID</label>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtUserId" SetFocusOnError="true" Font-Bold="true" Font-Italic="true" Font-Size="10pt" Display="Dynamic" Text=" is required" ValidationGroup="DOC" />
                             </div>
 
                             <!-- Password input -->
@@ -99,6 +100,7 @@
                                     placeholder="Enter password" />
                                 <%--<asp:TextBox runat="server" ID="txtPassword"  class="form-control form-control-lg" placeholder="Enter password"></asp:TextBox>--%>
                                 <label class="form-label" for="form3Example4">Password</label>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtPassword" SetFocusOnError="true" Font-Bold="true" Font-Italic="true" Font-Size="10pt" Display="Dynamic" Text=" is required" ValidationGroup="DOC" />
                             </div>
 
                             <div class="d-flex justify-content-between align-items-center">
@@ -110,11 +112,11 @@
                                    
                                     </label>
                                 </div>
-                                <a href="#!" class="text-body">Forgot password?</a>
+                                <a href="#!" class="text-body" runat="server" visible="false">Forgot password?</a>
                             </div>
 
                             <div class="text-center text-lg-start mt-4 pt-2">
-                                <asp:Button runat="server" ID="btnLogin" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;" Text="Login" />
+                                <asp:Button runat="server" ID="btnLogin" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;" Text="Login" ValidationGroup="DOC" />
                                 <%--<button type="button" class="btn btn-primary btn-lg"
                                     style="padding-left: 2.5rem; padding-right: 2.5rem;" runat="server" id="btnLogIn">
                                     Login</button>--%>

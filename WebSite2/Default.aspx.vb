@@ -11,6 +11,8 @@ Partial Class _Default
     Dim _clsDB As New clsDatabase
     Dim _dtCV As New DataTable
 
+    Dim _clsSecurity As New clsDimbo.clsSecurity
+
     Dim _clsLoginLog As New clsLoginLog
 
 
@@ -52,7 +54,13 @@ Partial Class _Default
                 Session("UserName") = .userName
             End With
 
-            Response.Redirect("~/Secured/Default.aspx")
+            If _clsSecurity.validateSameText("password", _clsUser.userPassword) Then
+                Response.Redirect("~/Secured/SystemAdministration/adUserChangePassword.aspx")
+            Else
+                Response.Redirect("~/Secured/Default.aspx")
+            End If
+
+
         End If
 
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="refDivision.aspx.vb" Inherits="Secured_Reference_refDivision" MasterPageFile="~/MasterPage/Admin.master" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="refDivision - Copy.aspx.vb" Inherits="Secured_Reference_refDivision" MasterPageFile="~/MasterPage/Admin.master" %>
 
 
 <%@ Register Src="~/Include/wucConfirmBoxBS5.ascx" TagName="wucConfirmBox" TagPrefix="wucConfirmBox" %>
@@ -8,13 +8,13 @@
     <asp:UpdatePanel runat="server" ID="UpdatePanel1">
         <ContentTemplate>
              
-           <asp:Panel DefaultButton="btnSearch" runat="server">
+            <asp:Panel DefaultButton="btnSearch" runat="server">
                 <h2 class="text-uppercase">Division<span runat="server" id="spanAppType"></span></h2>
                
                 <div class="row">
                     <div class="col-md-12">
                          <asp:Button runat="server" ID="btnAdd" CssClass="btn btn-primary" Text="Add" />
-                   </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
@@ -23,9 +23,7 @@
                             <asp:Button runat="server" ID="btnSearch" CssClass="btn btn-primary  mb-3" Text="Search" />
                         </div>
                     </div>
-                </div>
-                    
-                     <div class="row">
+                    <div class="row">
                         <div class="col-md-12">
                             <asp:GridView runat="server" ID="_gv" HeaderStyle-Font-Size="11px" CssClass="table table-row-bordered table-row-dashed gy-5" PageSize="15" EmptyDataText="NO RECORD FOUND"
                                 PagerStyle-CssClass="pgr" AlternatingRowStyle-CssClass="alt" AutoGenerateColumns="false"

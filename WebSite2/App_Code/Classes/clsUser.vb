@@ -146,7 +146,7 @@ Public Class clsUser
 
     Public Sub getUserInformation(ByVal _id As String)
         Dim dt As New DataTable
-        dt = _clsDB.Fill_DataTable("SELECT * FROM tbl_user_info WHERE user_id='" & _id & "'")
+        dt = _clsDB.Fill_DataTable("SELECT * FROM tbl_user_info WHERE user_id='" & _id & "' LIMIT 1")
         If dt.Rows.Count > 0 Then
             _userID = dt.Rows(0)("user_id")
             _userName = dt.Rows(0)("user_name")

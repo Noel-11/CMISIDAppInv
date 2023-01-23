@@ -71,13 +71,28 @@ Partial Class Secured_Reports_rptReports
             _where = _where & " AND client_id = '" & ddlClient.SelectedValue & "'"
         End If
 
-        sql = "SELECT application_name,application_details,application_url,DATE_FORMAT(application_start_date ,'%m-%d-%Y') as application_start_date,DATE_FORMAT(application_deployment_date,'%m-%d-%Y') AS application_end_date,application_version,application_status,client_name, personnel_assigned as personnel_name " & _
-            "FROM tbl_application " & _
-            "INNER JOIN tbl_ref_clients ON tbl_ref_clients.client_id  = tbl_application.client_id " & _
-            "INNER JOIN (SELECT GROUP_CONCAT(personnel_name) AS personnel_assigned,application_id FROM tbl_application_version " & _
-            "INNER JOIN tbl_application_assigned_personnel ON tbl_application_assigned_personnel.application_version_id = tbl_application_version.application_version_id " & _
-            "INNER JOIN tbl_ref_personnels ON tbl_ref_personnels.personnel_id = tbl_application_assigned_personnel.personnel_id) as tbl ON tbl.application_id = tbl_application.application_id   " & _
-            "WHERE application_start_date BETWEEN '" & txtDateFrom.Text & "' AND '" & txtDateTo.Text & "' " & _where & " ORDER BY application_name"
+        'sql = "SELECT application_name,application_details,application_url,DATE_FORMAT(application_start_date ,'%m-%d-%Y') as application_start_date,DATE_FORMAT(application_deployment_date,'%m-%d-%Y') AS application_end_date,application_version,application_status,client_name, personnel_assigned as personnel_name " & _
+        '    "FROM tbl_application " & _
+        '    "INNER JOIN tbl_ref_clients ON tbl_ref_clients.client_id  = tbl_application.client_id " & _
+        '    "INNER JOIN (SELECT GROUP_CONCAT(personnel_name) AS personnel_assigned,application_id FROM tbl_application_version " & _
+        '    "INNER JOIN tbl_application_assigned_personnel ON tbl_application_assigned_personnel.application_version_id = tbl_application_version.application_version_id " & _
+        '    "INNER JOIN tbl_ref_personnels ON tbl_ref_personnels.personnel_id = tbl_application_assigned_personnel.personnel_id) as tbl ON tbl.application_id = tbl_application.application_id   " & _
+        '    "WHERE application_start_date BETWEEN '" & txtDateFrom.Text & "' AND '" & txtDateTo.Text & "' " & _where & " ORDER BY application_name"
+
+        sql = "SELECT application_name,application_details,application_url,DATE_FORMAT(application_start_date ,'%m-%d-%Y') as application_start_date, " & _
+              "DATE_FORMAT(application_deployment_date,'%m-%d-%Y') AS application_end_date,application_version,application_status,client_name, GROUP_CONCAT(personnel_name) as personnel_name " & _
+              "FROM tbl_application AS tblApplication " & _
+              "INNER JOIN tbl_ref_clients ON tbl_ref_clients.client_id  = tblApplication.client_id " & _
+              "INNER JOIN tbl_application_version " & _
+              "ON tbl_application_version.application_version_id = " & _
+              "(SELECT application_version_id FROM tbl_application_version AS tblVersions " & _
+              "WHERE tblVersions.application_id = tblApplication.application_id " & _
+              "ORDER BY tblVersions.version_no DESC LIMIT 1 ) " & _
+              "INNER JOIN tbl_application_assigned_personnel ON tbl_application_version.application_version_id = tbl_application_assigned_personnel.application_version_id " & _
+              "INNER JOIN tbl_ref_personnels ON tbl_application_assigned_personnel.personnel_id = tbl_ref_personnels.personnel_id " & _
+              "WHERE application_start_date BETWEEN '" & txtDateFrom.Text & "' AND '" & txtDateTo.Text & "' " & _where & _
+              " GROUP BY tblApplication.application_id " & _
+              "ORDER BY tblApplication.application_name"
 
         dt = _clsDB.Fill_DataTable(sql)
 
