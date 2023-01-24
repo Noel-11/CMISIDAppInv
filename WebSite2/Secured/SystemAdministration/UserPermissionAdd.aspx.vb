@@ -150,8 +150,8 @@ Partial Class Secured_SystemAdministration_UserPermissionAdd
         For Each dgr As GridViewRow In _gv.Rows
             If dgr.Cells(0).Text = "PARENT" Then
                 dgr.Font.Bold = True
-                dgr.BackColor = Drawing.Color.Black
-                dgr.ForeColor = Drawing.Color.White
+                dgr.BackColor = Drawing.Color.SteelBlue
+                dgr.ForeColor = Drawing.Color.Yellow
                 dgr.Cells(0).FindControl("chkCreate").Visible = False
                 dgr.Cells(0).FindControl("chkUpdate").Visible = False
                 dgr.Cells(0).FindControl("chkDelete").Visible = False

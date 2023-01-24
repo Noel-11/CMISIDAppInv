@@ -17,7 +17,7 @@
                 <asp:Label runat="server" ID="lblUserId" Text=""></asp:Label>:
                     <asp:Label runat="server" ID="lblName" SkinID="lbl11B"> </asp:Label>
 
-                <asp:GridView runat="server" ID="_gv" SkinID="gvNoPaging">
+                <asp:GridView runat="server" ID="_gv" SkinID="gvNoPaging"  CssClass="table table-row-bordered table-row-dashed gy-5" >
                     <Columns>
                         <asp:BoundField DataField="menu_type" HeaderText="" />
                         <asp:BoundField DataField="menu_id" HeaderText="" />
