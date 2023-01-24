@@ -125,7 +125,7 @@ Partial Class Secured_Reports_rptReports
         '    "WHERE application_start_date BETWEEN '" & txtDateFrom.Text & "' AND '" & txtDateTo.Text & "' " & _where & " ORDER BY application_name"
 
         sql = "SELECT application_name,application_details,application_url,DATE_FORMAT(application_start_date ,'%m-%d-%Y') as application_start_date, " & _
-              "DATE_FORMAT(application_deployment_date,'%m-%d-%Y') AS application_end_date,application_version,application_status,client_name, GROUP_CONCAT(personnel_name) as personnel_name " & _
+              "DATE_FORMAT(application_deployment_date,'%m-%d-%Y') AS application_end_date,version_no AS application_version,application_status,client_name, GROUP_CONCAT(personnel_name) as personnel_name " & _
               "FROM tbl_application AS tblApplication " & _
               "INNER JOIN tbl_ref_clients ON tbl_ref_clients.client_id  = tblApplication.client_id " & _
               "INNER JOIN tbl_application_version " & _
@@ -136,7 +136,7 @@ Partial Class Secured_Reports_rptReports
               "INNER JOIN tbl_application_assigned_personnel ON tbl_application_version.application_version_id = tbl_application_assigned_personnel.application_version_id " & _
               "INNER JOIN tbl_ref_personnels ON tbl_application_assigned_personnel.personnel_id = tbl_ref_personnels.personnel_id " & _
               "WHERE application_start_date BETWEEN '" & txtDateFrom.Text & "' AND '" & txtDateTo.Text & "' " & _where & _
-              " GROUP BY tblApplication.application_id " & _
+              "GROUP BY tblApplication.application_id " & _
               "ORDER BY tblApplication.application_name"
 
         dt = _clsDB.Fill_DataTable(sql)
