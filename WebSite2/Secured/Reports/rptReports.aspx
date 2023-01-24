@@ -11,8 +11,7 @@
             <asp:Panel  runat="server">
                <%-- <asp:UpdatePanel runat="server">
                     <ContentTemplate>--%>
-
-
+                
                         <h2 class="text-uppercase">Application<span runat="server" id="spanAppType"></span></h2>
 
 
@@ -58,6 +57,10 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <asp:Button runat="server" ID="btnRetrieve" CssClass="btn btn-primary" Text="Retrieve" />
+                                <%-- <asp:Button runat="server" ID="btnExcel" CssClass="btn btn-primary float-end" Text="Excel" />--%>
+                                 <button type="button" runat="server" class="btn btn-success float-end" id="btnExcel" data-bs-toggle="tooltip" data-bs-placement="top" title="Download AS Excel" ><i class="fa-regular fa-file-excel" style="font-size:30px"></i></button>
+                                <button type="button" runat="server" class="btn btn-primary float-end" id="btnPDF"  data-bs-toggle="tooltip" data-bs-placement="top" title="Download AS PDF"><i class="fa-regular fa-file-pdf" style="font-size:30px"></i></button>
+                                 <%-- <asp:Button runat="server"  CssClass="btn btn-primary float-end" Text="PDF" /> --%>
                             </div>
                         </div>
 
@@ -72,6 +75,10 @@
 
             </asp:Panel>
         </ContentTemplate>
+        <Triggers>
+            <asp:PostBackTrigger ControlID="btnExcel" />
+            <asp:PostBackTrigger ControlID="btnPDF" />
+        </Triggers>
     </asp:UpdatePanel>
 
     <asp:UpdatePanel runat="server" ID="upUpdate">

@@ -27,7 +27,7 @@
 
                 </div>
 
-                <asp:GridView runat="server" ID="_gv" CssClass="table table-row-bordered table-row-dashed gy-5" SkinID="gvDefault">
+                <asp:GridView runat="server" ID="_gv" CssClass="table table-success table-striped" SkinID="gvDefault">
                     <Columns>
                         <asp:TemplateField HeaderText="Employee ID" HeaderStyle-Width="10%">
                             <ItemTemplate>

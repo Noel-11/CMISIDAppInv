@@ -26,7 +26,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <asp:GridView runat="server" ID="_gv" HeaderStyle-Font-Size="11px" CssClass="table table-row-bordered table-row-dashed gy-5" PageSize="15" EmptyDataText="NO RECORD FOUND"
+                        <asp:GridView runat="server" ID="_gv" HeaderStyle-Font-Size="11px" CssClass="table table-row-bordered table-row-dashed gy-5 table-hover table-striped" PageSize="15" EmptyDataText="NO RECORD FOUND"
                             PagerStyle-CssClass="pgr" AlternatingRowStyle-CssClass="alt" AutoGenerateColumns="false"
                             GridLines="None" Font-Names="Arial" Font-Size="12px" ForeColor="#000000" AllowPaging="true">
                             <Columns>

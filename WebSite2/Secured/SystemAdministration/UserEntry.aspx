@@ -26,7 +26,7 @@
 
                 </div>
 
-                <asp:GridView runat="server" ID="_gv" CssClass="table table-row-bordered table-row-dashed gy-5">
+                <asp:GridView runat="server" ID="_gv" CssClass="table table-success table-striped">
                     <Columns>
                         <asp:TemplateField HeaderText="User ID" HeaderStyle-Width="20%" ItemStyle-HorizontalAlign="Left">
                             <ItemTemplate>

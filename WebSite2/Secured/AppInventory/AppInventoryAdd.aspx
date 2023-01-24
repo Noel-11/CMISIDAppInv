@@ -140,7 +140,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <asp:GridView runat="server" ID="_gv" HeaderStyle-Font-Size="11px" CssClass="table table-striped" PageSize="15" EmptyDataText="NO RECORD FOUND"
+                    <asp:GridView runat="server" ID="_gv" HeaderStyle-Font-Size="11px" CssClass="table table-success table-striped" PageSize="15" EmptyDataText="NO RECORD FOUND"
                         PagerStyle-CssClass="pgr" AlternatingRowStyle-CssClass="alt" AutoGenerateColumns="false"
                         GridLines="None" Font-Names="Arial" Font-Size="12px" ForeColor="#000000" AllowPaging="false">
                         <Columns>

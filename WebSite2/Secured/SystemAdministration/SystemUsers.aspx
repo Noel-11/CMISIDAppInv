@@ -85,7 +85,7 @@
                                 </div>
                             </div>
 
-                            <asp:GridView runat="server" ID="_gvClient" HeaderStyle-Font-Size="11px" CssClass="gridviewGreen" PageSize="15"
+                            <asp:GridView runat="server" ID="_gvClient" HeaderStyle-Font-Size="11px" CssClass="table table-success table-striped" PageSize="15"
                                 AllowPaging="false" EmptyDataText="No Active" AlternatingRowStyle-CssClass="alt">
                             </asp:GridView>
 

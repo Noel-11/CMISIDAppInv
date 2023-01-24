@@ -64,7 +64,7 @@
 
                 </div>
 
-                <asp:GridView runat="server" ID="_gv" SkinID="gvDefault">
+                <asp:GridView runat="server" ID="_gv" CssClass="table table-success table-striped">
                     <Columns>
                         <asp:TemplateField HeaderText="User Role">
                             <ItemTemplate>

@@ -32,7 +32,7 @@
                     </table>
                    <button runat="server" onserverclick="btnBack_Click" type="button" id="btnReturn" class="btn btn-info btn-default" causesvalidation="false"><span class="glyphicon glyphicon-backward">&nbsp;BACK</span> </button>
                    <br />
-                     <asp:GridView runat="server" ID="_gv" CssClass="table table-row-bordered table-row-dashed gy-5" SkinID="gvDefault">
+                     <asp:GridView runat="server" ID="_gv" CssClass="table table-success table-striped" SkinID="gvDefault">
                         <Columns>
                             <asp:TemplateField HeaderText="Menu Id">
                                 <ItemTemplate>

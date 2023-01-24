@@ -22,7 +22,7 @@
                 </div>
             </div>
 
-            <asp:GridView runat="server" ID="_gv" HeaderStyle-Font-Size="14px" CssClass="table table-success table-striped" PageSize="15" EmptyDataText="NO RECORD FOUND"
+            <asp:GridView runat="server" ID="_gv" HeaderStyle-Font-Size="14px" CssClass="table table-success table-striped table-border" PageSize="15" EmptyDataText="NO RECORD FOUND"
                 PagerStyle-CssClass="pgr" AlternatingRowStyle-CssClass="alt" AutoGenerateColumns="false"
                 GridLines="None" Font-Names="Arial" Font-Size="12px" ForeColor="#000000" AllowPaging="true">
                 <Columns>

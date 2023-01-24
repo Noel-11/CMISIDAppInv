@@ -135,6 +135,7 @@
     <script src="<%=ResolveClientUrl("~/Scripts/Bootstrap5/NavbarTheme/js/scripts.js")%>"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="<%=ResolveClientUrl("~/Scripts/assets/js/scripts.bundle.js")%>"></script>
+    <script src="https://kit.fontawesome.com/9cfc2a3b54.js" crossorigin="anonymous"></script>
 </body>
 </html>
 

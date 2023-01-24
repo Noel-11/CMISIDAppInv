@@ -25,6 +25,21 @@ Partial Class Secured_Reports_rptReports
     End Sub
 
     Protected Sub btnRetrieve_Click(sender As Object, e As EventArgs) Handles btnRetrieve.Click
+        generateReport("REPORT")
+    End Sub
+
+    Protected Sub btnPDF_Click(sender As Object, e As EventArgs) Handles btnPDF.ServerClick
+        generateReport("PDF")
+    End Sub
+
+    Protected Sub btnExcel_Click(sender As Object, e As EventArgs) Handles btnExcel.ServerClick
+        generateReport("EXCEL")
+    End Sub
+
+
+    Private Sub generateReport(ByVal _type As String)
+
+
         ' Variables
         Dim warnings() As Warning = Nothing
         Dim streamIds() As String = Nothing
@@ -48,11 +63,41 @@ Partial Class Secured_Reports_rptReports
         rvPrint.LocalReport.DataSources.Add(datasource)
         rvPrint.LocalReport.Refresh()
 
-        Dim bytes() As Byte = rvPrint.LocalReport.Render("PDF", Nothing, mimeType, encoding, extension, streamIds, warnings)
 
-        Session("pdfBytes") = bytes
+        If _type = "REPORT" Then
+            Dim bytes() As Byte = rvPrint.LocalReport.Render("PDF", Nothing, mimeType, encoding, extension, streamIds, warnings)
 
-        ltEmbed.Text = String.Format("<object data=""{0}{1}"" type=""application/pdf"" width=""100%"" height=""1400px""></object>", ResolveUrl("~/ReportHandler.ashx"), "")
+            Session("pdfBytes") = bytes
+
+            ltEmbed.Text = String.Format("<object data=""{0}{1}"" type=""application/pdf"" width=""100%"" height=""1400px""></object>", ResolveUrl("~/ReportHandler.ashx"), "")
+
+        ElseIf _type = "PDF" Then
+
+            Dim bytes() As Byte = rvPrint.LocalReport.Render("PDF", Nothing, mimeType, encoding, extension, streamIds, warnings)
+
+            Response.Buffer = True
+            Response.Clear()
+            Response.ContentType = mimeType
+            Response.AddHeader("content-disposition", ("attachment; filename=report.pdf"))
+            Response.BinaryWrite(bytes)
+            '' create the file
+            Response.Flush()
+            Response.End()
+
+        ElseIf _type = "EXCEL" Then
+            Dim bytes() As Byte = rvPrint.LocalReport.Render("EXCEL", Nothing, mimeType, encoding, extension, streamIds, warnings)
+
+            Response.Buffer = True
+            Response.Clear()
+            Response.ContentType = mimeType
+            Response.AddHeader("content-disposition", ("attachment; filename=report.xls"))
+            Response.BinaryWrite(bytes)
+            '' create the file
+            Response.Flush()
+            Response.End()
+
+        End If
+
     End Sub
 
 
@@ -100,6 +145,7 @@ Partial Class Secured_Reports_rptReports
 
     End Function
 
+   
 End Class
 
 
