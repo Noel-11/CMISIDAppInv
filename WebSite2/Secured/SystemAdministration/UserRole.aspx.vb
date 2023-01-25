@@ -12,9 +12,7 @@ Partial Class Secured_UserRole
 
         Session.Remove("USER_ROLE_ID")
 
-
         If Not Page.IsPostBack Then
-
             fillGridView()
         End If
 
@@ -54,8 +52,6 @@ Partial Class Secured_UserRole
         Session("USER_ROLE_ID") = ""
         Response.Redirect("UserRoleAdd.aspx")
     End Sub
-
-
 
 
 End Class

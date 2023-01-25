@@ -146,10 +146,10 @@
                                         </div>
                                     </div>
 
-                                   <%-- <div class="row">
+                                <%--    <div class="row">
                                         <div class="col-md-12 mb-3">
                                             <asp:Label runat="server" ID="Label26">Is Active?</asp:Label>
-                                            <asp:RadioButtonList runat="server" ID="rdolisactive" CssClass="form-control " RepeatDirection="Horizontal">
+                                            <asp:RadioButtonList runat="server" ID="rdlisactive" CssClass="form-control " RepeatDirection="Horizontal">
                                                 <asp:ListItem Text="&nbsp;Yes&nbsp;&nbsp;&nbsp;" Value="Y" Selected="True"></asp:ListItem>
                                                 <asp:ListItem Text="&nbsp;No" Value="N"></asp:ListItem>
                                             </asp:RadioButtonList>

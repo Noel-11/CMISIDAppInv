@@ -154,6 +154,7 @@ Public Class clsApplication
             .ADDPARAM_CMD_String("application_url", _applicationUrl)
             .ADDPARAM_CMD_String("application_start_date", _applicationStartDate)
             .ADDPARAM_CMD_String("application_deployment_date", _applicationDeploymentDate)
+            ' .ADDPARAM_CMD_String("is_active", _isActive)
             .ADDPARAM_CMD_String("last_user", _lastUser)
             .ADDPARAM_CMD_String("last_date", DateTime.Now.ToString)
             .ADDPARAM_CMD_String("application_id", _applicationId)

@@ -83,6 +83,8 @@ Partial Class Secured_AppInventory_AppInventory
             txtContactNumber.Text = .contactNumber
             txtContactEmailAddress.Text = .contactEmailAddress
 
+            'rdlisactive.SelectedValue = .isActive
+
         End With
 
         With _clsApplicationVersion
@@ -147,6 +149,7 @@ Partial Class Secured_AppInventory_AppInventory
             .applicationUrl = txtUrl.Text.Trim
             .applicationStartDate = CDate(dtpStartDate.Value).ToString("yyyy-MM-dd")
             .applicationDeploymentDate = CDate(dtpDeploymentDate.Value).ToString("yyyy-MM-dd")
+            '.isActive = rdlisactive.SelectedValue
             .lastUser = Session("UserName")
             .updateApplication()
         End With
@@ -179,7 +182,6 @@ Partial Class Secured_AppInventory_AppInventory
     End Sub
 
 #End Region
-
 
 
 #Region "VERSION"
@@ -264,14 +266,14 @@ Partial Class Secured_AppInventory_AppInventory
             thisMsgBox.setMessage("Are you sure to add this personnel?<br/>" & _
                                   "Name: " & ddlPersonnel.SelectedItem.Text & "<br/>" &
                                   "Role: " & ddlRole.SelectedItem.Text.Trim & "<br/>")
-
         End If
 
-
         thisMsgBox.showConfirmBox()
+
     End Sub
 
     Private Sub savePersonnel()
+
         With _clsApplicationAssignedPersonnel
             .initialize()
             .applicationVersionId = Session("VERSIONDETAILS_ID")
@@ -283,7 +285,6 @@ Partial Class Secured_AppInventory_AppInventory
     End Sub
 
     Private Sub saveVersionDetails()
-
 
         With _clsApplicationVersion
             .initialize()
@@ -297,6 +298,7 @@ Partial Class Secured_AppInventory_AppInventory
             .systemAnalysisDesignUrl = txtVersionSadLink.Text.Trim
             .versionNo = txtVersionNo.Text.Trim.ToUpper
             .lastUser = Session("UserName")
+
             If Session("VERSION_MODE") = "ADD" Then
                 .saveApplicationVersion()
             Else
@@ -316,7 +318,6 @@ Partial Class Secured_AppInventory_AppInventory
         Else
             thisMsgBox.setMessage("Are you sure to update this version details?")
         End If
-
         thisMsgBox.showConfirmBox()
     End Sub
 
